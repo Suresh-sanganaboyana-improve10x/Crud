@@ -18,9 +18,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
-    public ArrayList<Dashboard> dashboardArrayList;
-    public void setupData(ArrayList<Dashboard> dashboardArrayList1) {
-        dashboardArrayList = dashboardArrayList1;
+    public ArrayList<Dashboard> dashboardList;
+    public void setupData(ArrayList<Dashboard> dashboards) {
+        dashboardList = dashboards;
     }
     @NonNull
     @Override
@@ -32,10 +32,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull DashboardViewHolder holder, int position) {
-        Dashboard dashboard = dashboardArrayList.get(position);
-        Picasso.get().load(dashboard.imageUrl).into(holder.imageView);
+        Dashboard dashboard = dashboardList.get(position);
+        Picasso.get().load(dashboard.imageUrl).into(holder.imageImg);
         holder.titleTxt.setText(dashboard.titleText);
-        holder.dashboardLayout.setOnClickListener(view -> {
+        holder.itemView.setOnClickListener(view -> {
             if (holder.titleTxt.getText().toString().equalsIgnoreCase("Message")) {
                 Intent intent = new Intent(holder.itemView.getContext(), MessagesActivity.class);
                 holder.itemView.getContext().startActivity(intent);
@@ -57,6 +57,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     @Override
     public int getItemCount() {
-        return dashboardArrayList.size();
+        return dashboardList.size();
     }
 }

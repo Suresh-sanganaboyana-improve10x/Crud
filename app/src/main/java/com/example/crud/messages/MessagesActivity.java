@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends AppCompatActivity {
-    public ArrayList<Messages> messagesArrayList = new ArrayList<>();
+    public ArrayList<Message> messagesArrayList = new ArrayList<>();
     public RecyclerView messagesRv;
     public MessagesAdapter messagesAdapter;
     public ProgressBar progressBar;
@@ -37,7 +37,7 @@ public class MessagesActivity extends AppCompatActivity {
         setupRecyclerViewForMessages();
     }
 
-    public void editMessage(Messages messages) {
+    public void editMessage(Message messages) {
         Intent intent = new Intent(this, AddEditMessageActivity.class);
         intent.putExtra("Messages", messages);
         startActivity(intent);
@@ -45,8 +45,8 @@ public class MessagesActivity extends AppCompatActivity {
 
     public void setOnDeleteMessage(String id) {
         MessageApi messageApi = new MessageApi();
-        MessageService messageService = messageApi.createMessageService();
-        Call<Void> call = messageService.deleteMessage(id);
+        MessagesService messagesService = messageApi.createMessageService();
+        Call<Void> call = messagesService.deleteMessage(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -86,19 +86,19 @@ public class MessagesActivity extends AppCompatActivity {
     public void fetchData() {
         showVisible();
         MessageApi messageApi = new MessageApi();
-        MessageService messageService = messageApi.createMessageService();
-        Call<List<Messages>> call = messageService.fetchMessages();
-        call.enqueue(new Callback<List<Messages>>() {
+        MessagesService messagesService = messageApi.createMessageService();
+        Call<List<Message>> call = messagesService.fetchMessages();
+        call.enqueue(new Callback<List<Message>>() {
             @Override
-            public void onResponse(Call<List<Messages>> call, Response<List<Messages>> response) {
+            public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
                 hideVisible();
-                List<Messages> messagesList = response.body();
+                List<Message> messagesList = response.body();
                 messagesAdapter.setupData(messagesList);
                 Toast.makeText(MessagesActivity.this, "Successfully fetch the data", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<List<Messages>> call, Throwable t) {
+            public void onFailure(Call<List<Message>> call, Throwable t) {
                 hideVisible();
 
             }
@@ -119,8 +119,8 @@ public class MessagesActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onEdit(Messages messages) {
-                editMessage(messages);
+            public void onEdit(Message message) {
+                editMessage(message);
             }
         });
         messagesRv.setAdapter(messagesAdapter);

@@ -16,7 +16,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddEditMessageActivity extends AppCompatActivity {
-    Messages messages;
+    Message message;
     EditText nameTxt;
     EditText phoneNumberTxt;
     EditText messageTxt;
@@ -25,13 +25,13 @@ public class AddEditMessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_message);
-        initView();
+        initViews();
         if (getIntent().hasExtra("Messages")) {
-            getSupportActionBar().setTitle("Edit Messages");
-            messages = (Messages) getIntent().getSerializableExtra("Messages");
+            getSupportActionBar().setTitle("Edit Message");
+            message = (Message) getIntent().getSerializableExtra("Messages");
             showData();
         } else {
-            getSupportActionBar().setTitle("Add Messages");
+            getSupportActionBar().setTitle("Add Message");
         }
     }
 
@@ -47,10 +47,10 @@ public class AddEditMessageActivity extends AppCompatActivity {
             String name = nameTxt.getText().toString();
             String phoneNumber = phoneNumberTxt.getText().toString();
             String message = messageTxt.getText().toString();
-            if (this.messages == null) {
+            if (this.message == null) {
                 addMessage(name, phoneNumber, message);
             } else {
-                updateMessages(this.messages.id, name, phoneNumber, message);
+                updateMessage(this.message.id, name, phoneNumber, message);
             }
             return true;
         } else {
@@ -59,20 +59,20 @@ public class AddEditMessageActivity extends AppCompatActivity {
     }
 
     public void showData() {
-        nameTxt.setText(messages.nameText);
-        phoneNumberTxt.setText(messages.phoneNumberText);
-        messageTxt.setText(messages.messageText);
+        nameTxt.setText(message.nameText);
+        phoneNumberTxt.setText(message.phoneNumberText);
+        messageTxt.setText(message.messageText);
     }
 
-    public void updateMessages(String id, String name, String phoneNumber, String messageText) {
-        messages = new Messages();
-        messages.nameText = name;
-        messages.phoneNumberText = phoneNumber;
-        messages.messageText = messageText;
+    public void updateMessage(String id, String name, String phoneNumber, String messageText) {
+        message = new Message();
+        message.nameText = name;
+        message.phoneNumberText = phoneNumber;
+        message.messageText = messageText;
 
         MessageApi messageApi = new MessageApi();
-        MessageService messageService = messageApi.createMessageService();
-        Call<Void> call = messageService.editMessage(id, messages);
+        MessagesService messagesService = messageApi.createMessageService();
+        Call<Void> call = messagesService.editMessage(id, message);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -88,44 +88,31 @@ public class AddEditMessageActivity extends AppCompatActivity {
     }
 
     public void addMessage(String name, String phoneNumber, String messageTxt) {
-        messages = new Messages();
-        messages.nameText = name;
-        messages.phoneNumberText = phoneNumber;
-        messages.messageText = messageTxt;
+        message = new Message();
+        message.nameText = name;
+        message.phoneNumberText = phoneNumber;
+        message.messageText = messageTxt;
 
         MessageApi messageApi = new MessageApi();
-        MessageService messageService = messageApi.createMessageService();
-        Call<Messages> call = messageService.createMessages(messages);
-        call.enqueue(new Callback<Messages>() {
+        MessagesService messagesService = messageApi.createMessageService();
+        Call<Message> call = messagesService.createMessage(message);
+        call.enqueue(new Callback<Message>() {
             @Override
-            public void onResponse(Call<Messages> call, Response<Messages> response) {
+            public void onResponse(Call<Message> call, Response<Message> response) {
                 Toast.makeText(AddEditMessageActivity.this, "Successfully added the message", Toast.LENGTH_SHORT).show();
                 finish();
             }
 
             @Override
-            public void onFailure(Call<Messages> call, Throwable t) {
+            public void onFailure(Call<Message> call, Throwable t) {
                 Toast.makeText(AddEditMessageActivity.this, "Failed to add message", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public void initView() {
+    public void initViews() {
         nameTxt = findViewById(R.id.name_txt);
         phoneNumberTxt = findViewById(R.id.phone_number_txt);
         messageTxt = findViewById(R.id.message_txt);
     }
-
-//    public void handleAddBtn() {
-//        addBtn = findViewById(R.id.add_btn);
-//        addBtn.setOnClickListener(view -> {
-//            nameTxt = findViewById(R.id.name_txt);
-//            String name =nameTxt.getText().toString();
-//            phoneNumberTxt = findViewById(R.id.phone_number_txt);
-//            String phoneNumber = phoneNumberTxt.getText().toString();
-//            messageTxt = findViewById(R.id.message_txt);
-//            String message = messageTxt.getText().toString();
-//            addMessage(name, phoneNumber, message);
-//        });
-//    }
 }

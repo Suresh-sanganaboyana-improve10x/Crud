@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.example.crud.R;
 
@@ -22,11 +20,11 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().setTitle("Dashboard");
-        setupDataForDashboard();
-        setupRecyclerViewForDashboard();
+        setupData();
+        setupDashboardsRv();
     }
 
-    public void setupRecyclerViewForDashboard() {
+    public void setupDashboardsRv() {
         dashboardRv = findViewById(R.id.dashboard_rv);
         dashboardRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardAdapter = new DashboardAdapter();
@@ -34,26 +32,26 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardRv.setAdapter(dashboardAdapter);
     }
 
-    public void setupDataForDashboard() {
+    public void setupData() {
         dashboards = new ArrayList<>();
-        Dashboard dashboard1 = new Dashboard();
-        dashboard1.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
-        dashboard1.titleText = "Message";
-        dashboards.add(dashboard1);
+        Dashboard message = new Dashboard();
+        message.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
+        message.titleText = "Message";
+        dashboards.add(message);
 
-        Dashboard dashboard2 = new Dashboard();
-        dashboard2.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
-        dashboard2.titleText = "Templates";
-        dashboards.add(dashboard2);
+        Dashboard templates = new Dashboard();
+        templates.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
+        templates.titleText = "Templates";
+        dashboards.add(templates);
 
-        Dashboard dashboard3 = new Dashboard();
-        dashboard3.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
-        dashboard3.titleText = "Series";
-        dashboards.add(dashboard3);
+        Dashboard series = new Dashboard();
+        series.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
+        series.titleText = "Series";
+        dashboards.add(series);
 
-        Dashboard dashboard4 = new Dashboard();
-        dashboard4.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
-        dashboard4.titleText = "Movies";
-        dashboards.add(dashboard4);
+        Dashboard movies = new Dashboard();
+        movies.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
+        movies.titleText = "Movies";
+        dashboards.add(movies);
     }
 }

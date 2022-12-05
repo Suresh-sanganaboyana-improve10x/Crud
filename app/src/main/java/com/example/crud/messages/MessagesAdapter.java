@@ -11,11 +11,11 @@ import com.example.crud.R;
 
 import java.util.List;
 
-public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
-    public List<Messages> messagesList;
+public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
+    public List<Message> messageList;
     public OnItemActionListener onItemActionListener;
-    public void setupData(List<Messages> messages) {
-        messagesList = messages;
+    public void setupData(List<Message> messages) {
+        messageList = messages;
         notifyDataSetChanged();
     }
 
@@ -24,15 +24,15 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
     }
     @NonNull
     @Override
-    public MessagesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.messages_item, parent, false);
-        MessagesViewHolder messagesViewHolder = new MessagesViewHolder(view);
-        return messagesViewHolder;
+        MessageViewHolder messageViewHolder = new MessageViewHolder(view);
+        return messageViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MessagesViewHolder holder, int position) {
-        Messages messages = messagesList.get(position);
+    public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
+        Message messages = messageList.get(position);
         holder.nameTxt.setText(messages.nameText);
         holder.phoneNumberTxt.setText(messages.phoneNumberText);
         holder.messageTxt.setText(messages.messageText);
@@ -46,6 +46,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesViewHolder> {
 
     @Override
     public int getItemCount() {
-        return messagesList.size();
+        return messageList.size();
     }
 }

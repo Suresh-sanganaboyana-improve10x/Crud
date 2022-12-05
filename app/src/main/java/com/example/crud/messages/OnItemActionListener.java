@@ -4,5 +4,5 @@ public interface OnItemActionListener {
 
     void onDelete(String id);
 
-    void onEdit(Messages messages);
+    void onEdit(Message message);
 }
