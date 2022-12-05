@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.movies.MoviesActivity;
 import com.example.crud.R;
-import com.example.crud.series.SeriesActivity;
+import com.example.crud.series.SeriesListActivity;
 import com.example.crud.templates.TemplatesActivity;
 import com.example.crud.messages.MessagesActivity;
 import com.squareup.picasso.Picasso;
@@ -45,7 +45,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
                 holder.itemView.getContext().startActivity(intent);
 
             } else if (holder.titleTxt.getText().toString().equalsIgnoreCase("Series")) {
-                Intent intent = new Intent(holder.itemView.getContext(), SeriesActivity.class);
+                Intent intent = new Intent(holder.itemView.getContext(), SeriesListActivity.class);
                 holder.itemView.getContext().startActivity(intent);
 
             } else if (holder.titleTxt.getText().toString().equalsIgnoreCase("Movies")) {

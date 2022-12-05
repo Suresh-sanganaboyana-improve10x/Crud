@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder> {
-    public ArrayList<Movies> moviesArrayList;
+public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
+    public ArrayList<Movie> movieArrayList;
 
     @NonNull
     @Override
-    public MoviesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MoviesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
 
     }
 

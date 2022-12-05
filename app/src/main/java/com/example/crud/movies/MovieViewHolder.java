@@ -5,8 +5,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MoviesViewHolder extends RecyclerView.ViewHolder {
-    public MoviesViewHolder(@NonNull View itemView) {
+public class MovieViewHolder extends RecyclerView.ViewHolder {
+    public MovieViewHolder(@NonNull View itemView) {
         super(itemView);
     }
 }

@@ -22,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SeriesActivity extends AppCompatActivity {
+public class SeriesListActivity extends AppCompatActivity {
     public ArrayList<Series> seriesList = new ArrayList<>();
     public RecyclerView seriesRv;
     public SeriesAdapter seriesAdapter;
@@ -33,10 +33,10 @@ public class SeriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_series);
 
-        setRecyclerView();
+        setSeriesRv();
     }
 
-    public void editSeriesData(Series series) {
+    public void updateSeries(Series series) {
         Intent intent = new Intent(this, AddEditSeriesActivity.class);
         intent.putExtra("Series", series);
         startActivity(intent);
@@ -79,10 +79,10 @@ public class SeriesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        fetchSeriesData();
+        fetchSeries();
     }
 
-    public void fetchSeriesData() {
+    public void fetchSeries() {
         showVisibility();
         SeriesApi seriesApi = new SeriesApi();
         SeriesService seriesService = seriesApi.createSeriesService();
@@ -93,7 +93,7 @@ public class SeriesActivity extends AppCompatActivity {
                 hideVisibility();
                 List<Series> seriesList = response.body();
                 seriesAdapter.setupData(seriesList);
-                Toast.makeText(SeriesActivity.this, "Successfully fetch the data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SeriesListActivity.this, "Successfully fetch the data", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -103,7 +103,7 @@ public class SeriesActivity extends AppCompatActivity {
         });
     }
 
-    public void setRecyclerView() {
+    public void setSeriesRv() {
         progressBar = findViewById(R.id.progress_bar);
         seriesRv = findViewById(R.id.series_rv);
         seriesRv.setLayoutManager(new LinearLayoutManager(this));
@@ -113,13 +113,13 @@ public class SeriesActivity extends AppCompatActivity {
             @Override
             public void onDelete(String id) {
                 deleteSeries(id);
-                fetchSeriesData();
-                Toast.makeText(SeriesActivity.this, "Successfully delete series", Toast.LENGTH_SHORT).show();
+                fetchSeries();
+                Toast.makeText(SeriesListActivity.this, "Successfully delete series", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onEdit(Series series) {
-                editSeriesData(series);
+                updateSeries(series);
             }
         });
         seriesRv.setAdapter(seriesAdapter);

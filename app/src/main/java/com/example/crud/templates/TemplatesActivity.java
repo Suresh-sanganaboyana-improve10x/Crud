@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class TemplatesActivity extends AppCompatActivity {
 
-    public ArrayList<com.example.crud.templates.Templates> templatesArrayList = new ArrayList<>();
+    public ArrayList<Template> templatesArrayList = new ArrayList<>();
     public RecyclerView templatesRv;
     public TemplatesAdapter templatesAdapter;
     public ProgressBar progressBar;
@@ -37,7 +37,7 @@ public class TemplatesActivity extends AppCompatActivity {
         setupRecyclerViewForTemplates();
     }
 
-    public void setEditTemplate(Templates templates) {
+    public void setEditTemplate(Template templates) {
         Intent intent = new Intent(this, AddEditTemplateActivity.class);
         intent.putExtra("Templates", templates);
         startActivity(intent);
@@ -88,18 +88,18 @@ public class TemplatesActivity extends AppCompatActivity {
         showVisible();
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<List<Templates>> call = templatesService.fetchTemplate();
-        call.enqueue(new Callback<List<com.example.crud.templates.Templates>>() {
+        Call<List<Template>> call = templatesService.fetchTemplate();
+        call.enqueue(new Callback<List<Template>>() {
             @Override
-            public void onResponse(Call<List<com.example.crud.templates.Templates>> call, Response<List<com.example.crud.templates.Templates>> response) {
+            public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
                 hideVisible();
                 Toast.makeText(TemplatesActivity.this, "Successfully fetch the data", Toast.LENGTH_SHORT).show();
-                List<Templates> templatesList = response.body();
+                List<Template> templatesList = response.body();
                 templatesAdapter.setData(templatesList);
             }
 
             @Override
-            public void onFailure(Call<List<com.example.crud.templates.Templates>> call, Throwable t) {
+            public void onFailure(Call<List<Template>> call, Throwable t) {
                 Toast.makeText(TemplatesActivity.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
                 hideVisible();
             }
@@ -120,7 +120,7 @@ public class TemplatesActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onEdit(Templates templates) {
+            public void onEdit(Template templates) {
                 setEditTemplate(templates);
             }
         });

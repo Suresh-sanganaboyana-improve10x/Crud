@@ -7,12 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.crud.R;
-import com.example.crud.movies.Movies;
 
 import java.util.ArrayList;
 
 public class MoviesActivity extends AppCompatActivity {
-    public ArrayList<Movies> movieList;
+    public ArrayList<Movie> movieList;
     public RecyclerView moviesRv;
     public MoviesAdapter moviesAdapter;
 
@@ -31,12 +30,12 @@ public class MoviesActivity extends AppCompatActivity {
 
     public void setupDataForMovies() {
         movieList = new ArrayList<>();
-        Movies movies = new Movies();
-        movies.description = "Dhurga";
-        movies.movieId = "1";
-        movies.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
-        movies.name = "harry";
-        movies.seriesId = "2";
-        movieList.add(movies);
+        Movie movie = new Movie();
+        movie.description = "Dhurga";
+        movie.movieId = "1";
+        movie.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
+        movie.name = "harry";
+        movie.seriesId = "2";
+        movieList.add(movie);
     }
 }

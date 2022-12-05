@@ -56,7 +56,7 @@ public class AddEditSeriesActivity extends AppCompatActivity {
             if (this.series == null) {
                 addSeries(id, title, imageUrl);
             } else {
-                updateSeries( id,title, imageUrl);
+                updateSeries(id,title, imageUrl);
             }
             return true;
         } else {
@@ -93,7 +93,7 @@ public class AddEditSeriesActivity extends AppCompatActivity {
     }
 
     public void addSeries(String id, String title, String imageUrl) {
-        Series series = new Series();
+        series = new Series();
         series.id = id;
         series.title = title;
         series.imageUrl = imageUrl;

@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class AddEditTemplateActivity extends AppCompatActivity {
     EditText messageTxt;
-    Templates templates;
+    Template template;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         initView();
         if (getIntent().hasExtra("Templates")) {
             getSupportActionBar().setTitle("Edit Template");
-            templates = (Templates) getIntent().getSerializableExtra("Templates");
+            template = (Template) getIntent().getSerializableExtra("Templates");
             showData();
         } else {
             getSupportActionBar().setTitle("Add Template");
@@ -43,10 +43,10 @@ public class AddEditTemplateActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.edit) {
             String message = messageTxt.getText().toString();
-            if (this.templates == null) {
+            if (this.template == null) {
                 addTemplate(message);
             } else {
-                updateTemplates(this.templates.id, message);
+                updateTemplate(this.template.id, message);
             }
             return true;
         } else {
@@ -55,20 +55,20 @@ public class AddEditTemplateActivity extends AppCompatActivity {
     }
 
     public void showData() {
-        messageTxt.setText(templates.messageText);
+        messageTxt.setText(template.messageText);
     }
 
     public void initView() {
         messageTxt = findViewById(R.id.message_txt);
     }
 
-    public void updateTemplates(String id, String messageTxt) {
-        templates = new Templates();
-        templates.messageText = messageTxt;
+    public void updateTemplate(String id, String messageTxt) {
+        template = new Template();
+        template.messageText = messageTxt;
 
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Void> call = templatesService.editTemplate(id, templates);
+        Call<Void> call = templatesService.editTemplate(id, template);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -84,21 +84,21 @@ public class AddEditTemplateActivity extends AppCompatActivity {
     }
 
     public void addTemplate(String messageText) {
-        Templates templates = new Templates();
-        templates.messageText = messageText;
+        template = new Template();
+        template.messageText = messageText;
 
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Templates> call = templatesService.addTemplate(templates);
-        call.enqueue(new Callback<Templates>() {
+        Call<Template> call = templatesService.addTemplate(template);
+        call.enqueue(new Callback<Template>() {
             @Override
-            public void onResponse(Call<Templates> call, Response<Templates> response) {
+            public void onResponse(Call<Template> call, Response<Template> response) {
                 Toast.makeText(AddEditTemplateActivity.this, "Successfully added the template", Toast.LENGTH_SHORT).show();
                 finish();
             }
 
             @Override
-            public void onFailure(Call<Templates> call, Throwable t) {
+            public void onFailure(Call<Template> call, Throwable t) {
 
             }
         });

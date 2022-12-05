@@ -11,11 +11,11 @@ import com.example.crud.R;
 
 import java.util.List;
 
-public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesViewHolder> {
+public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
 
     public OnItemActionListener onItemActionListener;
-    public List<Templates> templateList;
-    public void setData(List<Templates> templates) {
+    public List<Template> templateList;
+    public void setData(List<Template> templates) {
         templateList = templates;
         notifyDataSetChanged();
     }
@@ -24,15 +24,15 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplatesViewHolder> 
     }
     @NonNull
     @Override
-    public TemplatesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TemplateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.templates_item, parent, false);
-        TemplatesViewHolder templatesViewHolder = new TemplatesViewHolder(view);
-        return templatesViewHolder;
+        TemplateViewHolder templateViewHolder = new TemplateViewHolder(view);
+        return templateViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TemplatesViewHolder holder, int position) {
-        Templates templates = templateList.get(position);
+    public void onBindViewHolder(@NonNull TemplateViewHolder holder, int position) {
+        Template templates = templateList.get(position);
         holder.messageTextTxt.setText(templates.messageText);
         holder.deleteImgBtn.setOnClickListener(view -> {
             onItemActionListener.onDelete(templates.id);
