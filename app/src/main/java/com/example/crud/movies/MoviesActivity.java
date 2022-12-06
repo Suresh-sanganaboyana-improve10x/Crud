@@ -1,10 +1,14 @@
 package com.example.crud.movies;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.crud.R;
@@ -25,8 +29,24 @@ public class MoviesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
-//        setupDataForMovies();
         setRecyclerView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.movies_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.movie_add_item) {
+            Intent intent = new Intent(this, AddEditMovieActivity.class);
+            startActivity(intent);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -61,15 +81,4 @@ public class MoviesActivity extends AppCompatActivity {
         moviesAdapter.setData(movieList);
         moviesRv.setAdapter(moviesAdapter);
     }
-
-//    public void setupDataForMovies() {
-//        movieList = new ArrayList<>();
-//        Movie movie = new Movie();
-//        movie.description = "Dhurga";
-//        movie.movieId = "1";
-//        movie.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
-//        movie.name = "harry";
-//        movie.seriesId = "2";
-//        movieList.add(movie);
-//    }
 }
