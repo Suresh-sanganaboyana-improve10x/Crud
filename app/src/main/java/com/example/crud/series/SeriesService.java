@@ -24,5 +24,5 @@ public interface SeriesService {
     Call<Void> deleteSeries(@Path("id") String id);
 
     @PUT("series/{id}")
-    Call<Void> editSeries(@Path("id") String id,@Body Series series);
+    Call<Void> editSeries(@Path("id") String id, @Body Series series);
 }

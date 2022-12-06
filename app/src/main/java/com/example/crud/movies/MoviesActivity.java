@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.crud.R;
+import com.example.crud.series.AddEditSeriesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,42 @@ public class MoviesActivity extends AppCompatActivity {
         moviesRv.setLayoutManager(new GridLayoutManager(this, 2));
         moviesAdapter = new MoviesAdapter();
         moviesAdapter.setData(movieList);
+        moviesAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void onDelete(String id) {
+                deleteMovie(id);
+                setGetMovie();
+            }
+
+            @Override
+            public void onEdit(Movie movie) {
+                setEditMovie(movie);
+            }
+        });
         moviesRv.setAdapter(moviesAdapter);
+    }
+
+    public void deleteMovie(String id) {
+        MovieApi movieApi = new MovieApi();
+        MoviesService moviesService = movieApi.setMovieService();
+        Call<Void> call = moviesService.deleteMovie(id);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(MoviesActivity.this, "delete movie successfully", Toast.LENGTH_SHORT).show();
+                setGetMovie();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(MoviesActivity.this, "failed to delete movie", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void setEditMovie(Movie movie) {
+        Intent intent = new Intent(this, AddEditMovieActivity.class);
+        intent.putExtra("Movie", movie);
+        startActivity(intent);
     }
 }

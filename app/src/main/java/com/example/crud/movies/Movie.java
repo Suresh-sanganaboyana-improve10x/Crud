@@ -4,6 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Movie implements Serializable {
     @SerializedName("_id")
     public String id;
@@ -12,4 +16,5 @@ public class Movie implements Serializable {
     public String movieId;
     public String name;
     public String seriesId;
-}
+    }
+

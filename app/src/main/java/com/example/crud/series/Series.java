@@ -7,6 +7,7 @@ import java.io.Serializable;
 public class Series implements Serializable {
     @SerializedName("_id")
     public String id;
+    public String seriesId;
     public String imageUrl;
     public String title;
 }

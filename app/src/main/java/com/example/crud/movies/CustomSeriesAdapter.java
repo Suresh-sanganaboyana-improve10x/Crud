@@ -1,4 +1,4 @@
-package com.example.crud;
+package com.example.crud.movies;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.crud.R;
 import com.example.crud.series.Series;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class CustomSeriesAdapter extends ArrayAdapter<Series> {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.series_drop_down, parent, false);
         Series series = getItem(position);
         TextView titleTxt = view.findViewById(R.id.title_txt);
-        titleTxt.setText(series.id +" - " + series.title);
+        titleTxt.setText(series.seriesId +" - " + series.title);
         return view;
     }
 

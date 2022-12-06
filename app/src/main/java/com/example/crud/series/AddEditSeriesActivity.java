@@ -65,13 +65,14 @@ public class AddEditSeriesActivity extends AppCompatActivity {
     }
 
     public void showData() {
-        seriesId.setText(series.id);
+        seriesId.setText(series.seriesId);
         seriesName.setText(series.title);
         seriesUrlTxt.setText(series.imageUrl);
     }
 
     public void updateSeries(String id, String title, String imageUrl) {
         series = new Series();
+        series.seriesId = id;
         series.title = title;
         series.imageUrl = imageUrl;
 
@@ -94,7 +95,7 @@ public class AddEditSeriesActivity extends AppCompatActivity {
 
     public void addSeries(String id, String title, String imageUrl) {
         series = new Series();
-        series.id = id;
+        series.seriesId = id;
         series.title = title;
         series.imageUrl = imageUrl;
 
