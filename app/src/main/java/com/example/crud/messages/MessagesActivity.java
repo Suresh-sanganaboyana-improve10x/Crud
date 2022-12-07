@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.crud.Constants;
 import com.example.crud.R;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class MessagesActivity extends AppCompatActivity {
 
     public void editMessage(Message messages) {
         Intent intent = new Intent(this, AddEditMessageActivity.class);
-        intent.putExtra("Messages", messages);
+        intent.putExtra(Constants.KEY_MESSAGE, messages);
         startActivity(intent);
     }
 

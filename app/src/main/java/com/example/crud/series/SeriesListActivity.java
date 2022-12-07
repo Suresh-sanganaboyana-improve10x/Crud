@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.crud.Constants;
 import com.example.crud.R;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class SeriesListActivity extends AppCompatActivity {
 
     public void updateSeries(Series series) {
         Intent intent = new Intent(this, AddEditSeriesActivity.class);
-        intent.putExtra("Series", series);
+        intent.putExtra(Constants.KEY_SERIES, series);
         startActivity(intent);
     }
 

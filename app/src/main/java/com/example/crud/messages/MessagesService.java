@@ -1,5 +1,7 @@
 package com.example.crud.messages;
 
+import com.example.crud.Constants;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -12,15 +14,15 @@ import retrofit2.http.Path;
 
 public interface MessagesService {
 
-    @GET("sureshMessageHistory")
+    @GET(Constants.MESSAGES_END_POINT)
     Call<List<Message>> fetchMessages();
 
-    @POST("sureshMessageHistory")
+    @POST(Constants.MESSAGES_END_POINT)
     Call<Message> createMessage(@Body Message message);
 
-    @DELETE("sureshMessageHistory/{id}")
+    @DELETE(Constants.MESSAGES_END_POINT + "/{id}")
     Call<Void> deleteMessage(@Path("id") String id);
 
-    @PUT("sureshMessageHistory/{id}")
+    @PUT(Constants.MESSAGES_END_POINT + "/{id}")
     Call<Void> editMessage(@Path("id") String id, @Body Message message);
 }

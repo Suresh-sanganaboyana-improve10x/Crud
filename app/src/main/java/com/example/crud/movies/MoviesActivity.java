@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.series.AddEditSeriesActivity;
 
@@ -114,7 +115,7 @@ public class MoviesActivity extends AppCompatActivity {
 
     public void setEditMovie(Movie movie) {
         Intent intent = new Intent(this, AddEditMovieActivity.class);
-        intent.putExtra("Movie", movie);
+        intent.putExtra(Constants.KEY_MOVIE, movie);
         startActivity(intent);
     }
 }
