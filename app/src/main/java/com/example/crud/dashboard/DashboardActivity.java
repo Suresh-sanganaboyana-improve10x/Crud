@@ -11,9 +11,9 @@ import com.example.crud.R;
 import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
-    public ArrayList<Dashboard> dashboards;
-    public RecyclerView dashboardRv;
-    public DashboardAdapter dashboardAdapter;
+    private ArrayList<Dashboard> dashboards;
+    private RecyclerView dashboardRv;
+    private DashboardAdapter dashboardAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class DashboardActivity extends AppCompatActivity {
         setupDashboardsRv();
     }
 
-    public void setupDashboardsRv() {
+    private void setupDashboardsRv() {
         dashboardRv = findViewById(R.id.dashboard_rv);
         dashboardRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardAdapter = new DashboardAdapter();
@@ -32,7 +32,7 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardRv.setAdapter(dashboardAdapter);
     }
 
-    public void setupData() {
+    private void setupData() {
         dashboards = new ArrayList<>();
         Dashboard message = new Dashboard();
         message.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";

@@ -17,10 +17,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddEditSeriesActivity extends AppCompatActivity {
-    Series series;
-    EditText seriesIdTxt;
-    EditText seriesNameTxt;
-    EditText seriesUrlTxt;
+    private Series series;
+    private EditText seriesIdTxt;
+    private EditText seriesNameTxt;
+    private EditText seriesUrlTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         }
     }
 
-    public void initView() {
+    private void initView() {
         seriesIdTxt = findViewById(R.id.series_id_txt);
         seriesNameTxt = findViewById(R.id.series_name_txt);
         seriesUrlTxt = findViewById(R.id.series_url_txt);
@@ -65,13 +65,13 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         }
     }
 
-    public void showData() {
+    private void showData() {
         seriesIdTxt.setText(series.seriesId);
         seriesNameTxt.setText(series.title);
         seriesUrlTxt.setText(series.imageUrl);
     }
 
-    public void updateSeries(String id,String seriesId, String title, String imageUrl) {
+    private void updateSeries(String id,String seriesId, String title, String imageUrl) {
         series = new Series();
         series.seriesId = seriesId;
         series.title = title;
@@ -94,7 +94,7 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         });
     }
 
-    public void addSeries(String seriesId, String title, String imageUrl) {
+    private void addSeries(String seriesId, String title, String imageUrl) {
         series = new Series();
         series.seriesId = seriesId;
         series.title = title;

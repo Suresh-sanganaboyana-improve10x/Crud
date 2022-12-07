@@ -17,10 +17,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddEditMessageActivity extends AppCompatActivity {
-    Message message;
-    EditText nameTxt;
-    EditText phoneNumberTxt;
-    EditText messageTxt;
+    private Message message;
+    private EditText nameTxt;
+    private EditText phoneNumberTxt;
+    private EditText messageTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +59,13 @@ public class AddEditMessageActivity extends AppCompatActivity {
         }
     }
 
-    public void showData() {
+    private void showData() {
         nameTxt.setText(message.nameText);
         phoneNumberTxt.setText(message.phoneNumberText);
         messageTxt.setText(message.messageText);
     }
 
-    public void updateMessage(String id, String name, String phoneNumber, String messageText) {
+    private void updateMessage(String id, String name, String phoneNumber, String messageText) {
         message = new Message();
         message.nameText = name;
         message.phoneNumberText = phoneNumber;
@@ -88,7 +88,7 @@ public class AddEditMessageActivity extends AppCompatActivity {
         });
     }
 
-    public void addMessage(String name, String phoneNumber, String messageTxt) {
+    private void addMessage(String name, String phoneNumber, String messageTxt) {
         message = new Message();
         message.nameText = name;
         message.phoneNumberText = phoneNumber;
@@ -111,7 +111,7 @@ public class AddEditMessageActivity extends AppCompatActivity {
         });
     }
 
-    public void initViews() {
+    private void initViews() {
         nameTxt = findViewById(R.id.name_txt);
         phoneNumberTxt = findViewById(R.id.phone_number_txt);
         messageTxt = findViewById(R.id.message_txt);

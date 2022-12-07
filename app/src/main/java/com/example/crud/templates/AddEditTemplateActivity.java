@@ -55,15 +55,15 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         }
     }
 
-    public void showData() {
+    private void showData() {
         messageTxt.setText(template.messageText);
     }
 
-    public void initView() {
+    private void initView() {
         messageTxt = findViewById(R.id.message_txt);
     }
 
-    public void updateTemplate(String id, String messageTxt) {
+    private void updateTemplate(String id, String messageTxt) {
         template = new Template();
         template.messageText = messageTxt;
 
@@ -84,7 +84,7 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         });
     }
 
-    public void addTemplate(String messageText) {
+    private void addTemplate(String messageText) {
         template = new Template();
         template.messageText = messageText;
 

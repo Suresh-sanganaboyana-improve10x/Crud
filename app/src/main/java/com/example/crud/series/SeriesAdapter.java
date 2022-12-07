@@ -13,8 +13,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
-    public List<Series> seriesArrayList;
-    public OnItemActionListener onItemActionListener;
+    private List<Series> seriesArrayList;
+    private OnItemActionListener onItemActionListener;
     public void setupData(List<Series> serieses) {
         seriesArrayList = serieses;
         notifyDataSetChanged();

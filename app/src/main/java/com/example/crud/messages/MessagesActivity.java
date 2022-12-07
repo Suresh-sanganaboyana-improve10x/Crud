@@ -24,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends AppCompatActivity {
-    public ArrayList<Message> messagesArrayList = new ArrayList<>();
-    public RecyclerView messagesRv;
-    public MessagesAdapter messagesAdapter;
-    public ProgressBar progressBar;
+    private ArrayList<Message> messagesArrayList = new ArrayList<>();
+    private RecyclerView messagesRv;
+    private MessagesAdapter messagesAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +38,13 @@ public class MessagesActivity extends AppCompatActivity {
         setupRecyclerViewForMessages();
     }
 
-    public void editMessage(Message messages) {
+    private void editMessage(Message messages) {
         Intent intent = new Intent(this, AddEditMessageActivity.class);
         intent.putExtra(Constants.KEY_MESSAGE, messages);
         startActivity(intent);
     }
 
-    public void setOnDeleteMessage(String id) {
+    private void setOnDeleteMessage(String id) {
         MessageApi messageApi = new MessageApi();
         MessagesService messagesService = messageApi.createMessageService();
         Call<Void> call = messagesService.deleteMessage(id);
@@ -84,7 +84,7 @@ public class MessagesActivity extends AppCompatActivity {
         }
     }
 
-    public void fetchData() {
+    private void fetchData() {
         showVisible();
         MessageApi messageApi = new MessageApi();
         MessagesService messagesService = messageApi.createMessageService();
@@ -106,7 +106,7 @@ public class MessagesActivity extends AppCompatActivity {
         });
     }
 
-    public void setupRecyclerViewForMessages() {
+    private void setupRecyclerViewForMessages() {
         progressBar = findViewById(R.id.progress_bar);
         messagesRv = findViewById(R.id.messages_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
@@ -127,11 +127,11 @@ public class MessagesActivity extends AppCompatActivity {
         messagesRv.setAdapter(messagesAdapter);
     }
 
-    public void showVisible() {
+    private void showVisible() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    public void hideVisible() {
+    private void hideVisible() {
         progressBar.setVisibility(View.GONE);
     }
 }

@@ -25,14 +25,14 @@ import retrofit2.Response;
 
 public class AddEditMovieActivity extends AppCompatActivity {
 
-    public Spinner seriesSp;
-    public CustomSeriesAdapter customSeriesAdapter;
-    public ArrayList<Series> seriesList = new ArrayList<>();
-    public EditText movieIdTextTxt;
-    public EditText movieNameTextTxt;
-    public EditText imageUrlTextTxt;
-    public EditText descriptionTextTxt;
-    public Movie movie;
+    private Spinner seriesSp;
+    private CustomSeriesAdapter customSeriesAdapter;
+    private ArrayList<Series> seriesList = new ArrayList<>();
+    private EditText movieIdTextTxt;
+    private EditText movieNameTextTxt;
+    private EditText imageUrlTextTxt;
+    private EditText descriptionTextTxt;
+    private Movie movie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
         }
     }
 
-    public void updateMovie(String id, String movieId, String seriesId, String imageUrl, String title, String description) {
+    private void updateMovie(String id, String movieId, String seriesId, String imageUrl, String title, String description) {
         movie = new Movie();
         movie.movieId = movieId;
         movie.seriesId = seriesId;
@@ -103,7 +103,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
         });
     }
 
-    public void fetchSeries() {
+    private void fetchSeries() {
         SeriesApi seriesApi = new SeriesApi();
         SeriesService seriesService = seriesApi.createSeriesService();
         Call<List<Series>> call = seriesService.fetchData();
@@ -125,7 +125,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
         });
     }
 
-    public void addMovie(String movieId, String seriesId, String imageUrl, String title, String description) {
+    private void addMovie(String movieId, String seriesId, String imageUrl, String title, String description) {
         movie = new Movie();
         movie.movieId = movieId;
         movie.seriesId = seriesId;
@@ -151,7 +151,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
         });
     }
 
-    public void showData() {
+    private void showData() {
         movieIdTextTxt.setText(movie.movieId);
         movieNameTextTxt.setText(movie.name);
         imageUrlTextTxt.setText(movie.imageUrl);
@@ -164,13 +164,13 @@ public class AddEditMovieActivity extends AppCompatActivity {
         }
     }
 
-    public void setupSeriesSp() {
+    private void setupSeriesSp() {
         seriesSp = findViewById(R.id.series_sp);
         customSeriesAdapter = new CustomSeriesAdapter(this, android.R.layout.simple_list_item_1, seriesList);
         seriesSp.setAdapter(customSeriesAdapter);
     }
 
-    public void initViews() {
+    private void initViews() {
         movieIdTextTxt = findViewById(R.id.movie_id_text_txt);
         movieNameTextTxt = findViewById(R.id.movie_name_text_txt);
         seriesSp = findViewById(R.id.series_sp);

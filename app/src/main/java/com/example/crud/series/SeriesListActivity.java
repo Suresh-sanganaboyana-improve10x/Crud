@@ -24,10 +24,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeriesListActivity extends AppCompatActivity {
-    public ArrayList<Series> seriesList = new ArrayList<>();
-    public RecyclerView seriesRv;
-    public SeriesAdapter seriesAdapter;
-    public ProgressBar progressBar;
+    private ArrayList<Series> seriesList = new ArrayList<>();
+    private RecyclerView seriesRv;
+    private SeriesAdapter seriesAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +37,13 @@ public class SeriesListActivity extends AppCompatActivity {
         setSeriesRv();
     }
 
-    public void updateSeries(Series series) {
+    private void updateSeries(Series series) {
         Intent intent = new Intent(this, AddEditSeriesActivity.class);
         intent.putExtra(Constants.KEY_SERIES, series);
         startActivity(intent);
     }
 
-    public void deleteSeries(String id) {
+    private void deleteSeries(String id) {
         SeriesApi seriesApi = new SeriesApi();
         SeriesService seriesService = seriesApi.createSeriesService();
         Call<Void> call = seriesService.deleteSeries(id);
@@ -83,7 +83,7 @@ public class SeriesListActivity extends AppCompatActivity {
         fetchSeries();
     }
 
-    public void fetchSeries() {
+    private void fetchSeries() {
         showVisibility();
         SeriesApi seriesApi = new SeriesApi();
         SeriesService seriesService = seriesApi.createSeriesService();
@@ -104,7 +104,7 @@ public class SeriesListActivity extends AppCompatActivity {
         });
     }
 
-    public void setSeriesRv() {
+    private void setSeriesRv() {
         progressBar = findViewById(R.id.progress_bar);
         seriesRv = findViewById(R.id.series_rv);
         seriesRv.setLayoutManager(new LinearLayoutManager(this));
@@ -126,11 +126,11 @@ public class SeriesListActivity extends AppCompatActivity {
         seriesRv.setAdapter(seriesAdapter);
     }
 
-    public void showVisibility() {
+    private void showVisibility() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    public void hideVisibility() {
+    private void hideVisibility() {
         progressBar.setVisibility(View.GONE);
     }
 }

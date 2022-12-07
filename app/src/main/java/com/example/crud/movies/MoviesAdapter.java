@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
-    public List<Movie> movieArrayList;
-    public OnItemActionListener onItemActionListener;
+    private List<Movie> movieArrayList;
+    private OnItemActionListener onItemActionListener;
     public void setData(List<Movie> movies) {
         movieArrayList = movies;
         notifyDataSetChanged();

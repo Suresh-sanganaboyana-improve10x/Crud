@@ -25,10 +25,10 @@ import retrofit2.Response;
 
 public class TemplatesActivity extends AppCompatActivity {
 
-    public ArrayList<Template> templatesArrayList = new ArrayList<>();
-    public RecyclerView templatesRv;
-    public TemplatesAdapter templatesAdapter;
-    public ProgressBar progressBar;
+    private ArrayList<Template> templatesArrayList = new ArrayList<>();
+    private RecyclerView templatesRv;
+    private TemplatesAdapter templatesAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +38,13 @@ public class TemplatesActivity extends AppCompatActivity {
         setupRecyclerViewForTemplates();
     }
 
-    public void setEditTemplate(Template templates) {
+    private void setEditTemplate(Template templates) {
         Intent intent = new Intent(this, AddEditTemplateActivity.class);
         intent.putExtra(Constants.KEY_TEMPLATE, templates);
         startActivity(intent);
     }
 
-    public void setDeleteTemplate(String id) {
+    private void setDeleteTemplate(String id) {
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
         Call<Void> call = templatesService.deleteTemplate(id);
@@ -85,7 +85,7 @@ public class TemplatesActivity extends AppCompatActivity {
         fetchData();
     }
 
-    public void fetchData() {
+    private void fetchData() {
         showVisible();
         TemplatesApi templatesApi = new TemplatesApi();
         TemplatesService templatesService = templatesApi.createTemplatesService();
@@ -107,7 +107,7 @@ public class TemplatesActivity extends AppCompatActivity {
         });
     }
 
-    public void setupRecyclerViewForTemplates() {
+    private void setupRecyclerViewForTemplates() {
         progressBar = findViewById(R.id.progress_bar);
         templatesRv = findViewById(R.id.templates_rv);
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
@@ -128,11 +128,11 @@ public class TemplatesActivity extends AppCompatActivity {
         templatesRv.setAdapter(templatesAdapter);
     }
 
-    public void showVisible() {
+    private void showVisible() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    public void hideVisible() {
+    private void hideVisible() {
         progressBar.setVisibility(View.GONE);
     }
 }
