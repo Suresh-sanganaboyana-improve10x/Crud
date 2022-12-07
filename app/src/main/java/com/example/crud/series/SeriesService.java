@@ -14,15 +14,15 @@ import retrofit2.http.Path;
 
 public interface SeriesService {
 
-    @GET("series")
+    @GET("sureshSeries")
     Call<List<Series>> fetchData();
 
-    @POST("series")
+    @POST("sureshSeries")
     Call<Series> addSeries(@Body Series series);
 
-    @DELETE("series/{id}")
+    @DELETE("sureshSeries/{id}")
     Call<Void> deleteSeries(@Path("id") String id);
 
-    @PUT("series/{id}")
+    @PUT("sureshSeries/{id}")
     Call<Void> editSeries(@Path("id") String id, @Body Series series);
 }

@@ -31,7 +31,6 @@ public class AddEditMovieActivity extends AppCompatActivity {
     public EditText movieNameTextTxt;
     public EditText imageUrlTextTxt;
     public EditText descriptionTextTxt;
-    public EditText seriesIdTextTxt;
     public Movie movie;
 
     @Override
@@ -97,6 +96,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(AddEditMovieActivity.this, "Failed to update", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -157,7 +157,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
         descriptionTextTxt.setText(movie.description);
         for (int i = 0; i<customSeriesAdapter.getCount(); i++) {
             Series series = customSeriesAdapter.getItem(i);
-            if (movie.seriesId.equals(series.seriesId)) {
+            if (movie.id.equals(series.id)) {
                 seriesSp.setSelection(i);
             }
         }
@@ -171,7 +171,6 @@ public class AddEditMovieActivity extends AppCompatActivity {
 
     public void initViews() {
         movieIdTextTxt = findViewById(R.id.movie_id_text_txt);
-        seriesIdTextTxt = findViewById(R.id.series_id_txt);
         movieNameTextTxt = findViewById(R.id.movie_name_text_txt);
         seriesSp = findViewById(R.id.series_sp);
         imageUrlTextTxt = findViewById(R.id.image_url_text_txt);

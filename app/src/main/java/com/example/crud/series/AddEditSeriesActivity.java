@@ -17,8 +17,8 @@ import retrofit2.Response;
 
 public class AddEditSeriesActivity extends AppCompatActivity {
     Series series;
-    EditText seriesId;
-    EditText seriesName;
+    EditText seriesIdTxt;
+    EditText seriesNameTxt;
     EditText seriesUrlTxt;
 
     @Override
@@ -36,8 +36,8 @@ public class AddEditSeriesActivity extends AppCompatActivity {
     }
 
     public void initView() {
-        seriesId = findViewById(R.id.series_id_txt);
-        seriesName = findViewById(R.id.series_name_txt);
+        seriesIdTxt = findViewById(R.id.series_id_txt);
+        seriesNameTxt = findViewById(R.id.series_name_txt);
         seriesUrlTxt = findViewById(R.id.series_url_txt);
     }
 
@@ -50,13 +50,13 @@ public class AddEditSeriesActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.add_edit) {
-            String id = seriesId.getText().toString();
-            String title = seriesName.getText().toString();
+            String seriesId = seriesIdTxt.getText().toString();
+            String title = seriesNameTxt.getText().toString();
             String imageUrl = seriesUrlTxt.getText().toString();
             if (this.series == null) {
-                addSeries(id, title, imageUrl);
+                addSeries(seriesId, title, imageUrl);
             } else {
-                updateSeries(id,title, imageUrl);
+                updateSeries(series.id, seriesId, title, imageUrl);
             }
             return true;
         } else {
@@ -65,14 +65,14 @@ public class AddEditSeriesActivity extends AppCompatActivity {
     }
 
     public void showData() {
-        seriesId.setText(series.seriesId);
-        seriesName.setText(series.title);
+        seriesIdTxt.setText(series.seriesId);
+        seriesNameTxt.setText(series.title);
         seriesUrlTxt.setText(series.imageUrl);
     }
 
-    public void updateSeries(String id, String title, String imageUrl) {
+    public void updateSeries(String id,String seriesId, String title, String imageUrl) {
         series = new Series();
-        series.seriesId = id;
+        series.seriesId = seriesId;
         series.title = title;
         series.imageUrl = imageUrl;
 
@@ -93,9 +93,9 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         });
     }
 
-    public void addSeries(String id, String title, String imageUrl) {
+    public void addSeries(String seriesId, String title, String imageUrl) {
         series = new Series();
-        series.seriesId = id;
+        series.seriesId = seriesId;
         series.title = title;
         series.imageUrl = imageUrl;
 

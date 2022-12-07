@@ -20,6 +20,6 @@ public interface MoviesService {
     @DELETE("sureshMovies/{id}")
     Call<Void> deleteMovie(@Path("id") String id);
 
-    @PUT("sureshMovie/{id}")
+    @PUT("sureshMovies/{id}")
     Call<Void> editMovie(@Path("id") String id, @Body Movie movie);
 }

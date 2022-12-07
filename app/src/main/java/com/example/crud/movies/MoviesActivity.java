@@ -84,7 +84,6 @@ public class MoviesActivity extends AppCompatActivity {
             @Override
             public void onDelete(String id) {
                 deleteMovie(id);
-                setGetMovie();
             }
 
             @Override
