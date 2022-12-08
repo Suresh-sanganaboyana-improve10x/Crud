@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,7 @@ public class MessagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
+        Log.i("MessageActivity", "OnCreate called");
         getSupportActionBar().setTitle("Messages");
 
         setupRecyclerViewForMessages();
@@ -64,6 +66,7 @@ public class MessagesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.i("MessageActivity", "OnResume called");
         fetchData();
     }
 
