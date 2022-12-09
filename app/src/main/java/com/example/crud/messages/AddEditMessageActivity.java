@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.crud.Api.CrudApi;
+import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 
@@ -21,12 +23,14 @@ public class AddEditMessageActivity extends AppCompatActivity {
     private EditText nameTxt;
     private EditText phoneNumberTxt;
     private EditText messageTxt;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_message);
         initViews();
+        setupApiService();
         if (getIntent().hasExtra(Constants.KEY_MESSAGE)) {
             getSupportActionBar().setTitle("Edit Message");
             message = (Message) getIntent().getSerializableExtra(Constants.KEY_MESSAGE);
@@ -34,6 +38,11 @@ public class AddEditMessageActivity extends AppCompatActivity {
         } else {
             getSupportActionBar().setTitle("Add Message");
         }
+    }
+
+    public void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     @Override
@@ -71,13 +80,12 @@ public class AddEditMessageActivity extends AppCompatActivity {
         message.phoneNumberText = phoneNumber;
         message.messageText = messageText;
 
-        MessageApi messageApi = new MessageApi();
-        MessagesService messagesService = messageApi.createMessageService();
-        Call<Void> call = messagesService.editMessage(id, message);
+        setupApiService();
+        Call<Void> call = crudService.editMessage(id, message);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(AddEditMessageActivity.this, "Successfully message updated", Toast.LENGTH_SHORT).show();
+                showToast("Successfully message updated");
                 finish();
             }
 
@@ -94,19 +102,18 @@ public class AddEditMessageActivity extends AppCompatActivity {
         message.phoneNumberText = phoneNumber;
         message.messageText = messageTxt;
 
-        MessageApi messageApi = new MessageApi();
-        MessagesService messagesService = messageApi.createMessageService();
-        Call<Message> call = messagesService.createMessage(message);
+        setupApiService();
+        Call<Message> call = crudService.createMessage(message);
         call.enqueue(new Callback<Message>() {
             @Override
             public void onResponse(Call<Message> call, Response<Message> response) {
-                Toast.makeText(AddEditMessageActivity.this, "Successfully added the message", Toast.LENGTH_SHORT).show();
+                showToast("Successfully added the message");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Message> call, Throwable t) {
-                Toast.makeText(AddEditMessageActivity.this, "Failed to add message", Toast.LENGTH_SHORT).show();
+                showToast("Failed to add message");
             }
         });
     }
@@ -115,5 +122,10 @@ public class AddEditMessageActivity extends AppCompatActivity {
         nameTxt = findViewById(R.id.name_txt);
         phoneNumberTxt = findViewById(R.id.phone_number_txt);
         messageTxt = findViewById(R.id.message_txt);
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(AddEditMessageActivity.this, message, Toast.LENGTH_SHORT).show();
+
     }
 }

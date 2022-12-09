@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.crud.Api.CrudApi;
+import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 
@@ -29,6 +31,7 @@ public class MessagesActivity extends AppCompatActivity {
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
     private ProgressBar progressBar;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,12 @@ public class MessagesActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Messages");
 
         setupRecyclerViewForMessages();
+        setupApiService();
+    }
+
+    public void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     private void editMessage(Message messages) {
@@ -47,13 +56,12 @@ public class MessagesActivity extends AppCompatActivity {
     }
 
     private void setOnDeleteMessage(String id) {
-        MessageApi messageApi = new MessageApi();
-        MessagesService messagesService = messageApi.createMessageService();
-        Call<Void> call = messagesService.deleteMessage(id);
+        setupApiService();
+        Call<Void> call = crudService.deleteMessage(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(MessagesActivity.this, "Successfully delete message", Toast.LENGTH_SHORT).show();
+                showToast("Deleted the message");
             }
 
             @Override
@@ -89,16 +97,15 @@ public class MessagesActivity extends AppCompatActivity {
 
     private void fetchData() {
         showVisible();
-        MessageApi messageApi = new MessageApi();
-        MessagesService messagesService = messageApi.createMessageService();
-        Call<List<Message>> call = messagesService.fetchMessages();
+        setupApiService();
+        Call<List<Message>> call = crudService.fetchMessages();
         call.enqueue(new Callback<List<Message>>() {
             @Override
             public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
                 hideVisible();
                 List<Message> messagesList = response.body();
                 messagesAdapter.setupData(messagesList);
-                Toast.makeText(MessagesActivity.this, "Successfully fetch the data", Toast.LENGTH_SHORT).show();
+                showToast("Successfully fetch the data");
             }
 
             @Override
@@ -136,5 +143,10 @@ public class MessagesActivity extends AppCompatActivity {
 
     private void hideVisible() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    private void showToast(String messages) {
+        Toast.makeText(MessagesActivity.this, messages, Toast.LENGTH_SHORT).show();
+
     }
 }

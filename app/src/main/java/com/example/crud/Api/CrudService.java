@@ -1,6 +1,7 @@
-package com.example.crud.messages;
+package com.example.crud.Api;
 
 import com.example.crud.Constants;
+import com.example.crud.messages.Message;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
-public interface MessagesService {
+public interface CrudService {
 
     @GET(Constants.MESSAGES_END_POINT)
     Call<List<Message>> fetchMessages();
@@ -25,4 +26,6 @@ public interface MessagesService {
 
     @PUT(Constants.MESSAGES_END_POINT + "/{id}")
     Call<Void> editMessage(@Path("id") String id, @Body Message message);
+
+
 }
