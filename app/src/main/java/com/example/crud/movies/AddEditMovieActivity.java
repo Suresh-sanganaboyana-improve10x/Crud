@@ -15,8 +15,6 @@ import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.series.Series;
-import com.example.crud.series.SeriesApi;
-import com.example.crud.series.SeriesService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +66,6 @@ public class AddEditMovieActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.movie_add_edit_btn) {
-            Toast.makeText(this, "Cliked", Toast.LENGTH_SHORT).show();
             String movieId = movieIdTextTxt.getText().toString();
             Series series = (Series) seriesSp.getSelectedItem();
             String seriesId = series.seriesId;
@@ -99,22 +96,21 @@ public class AddEditMovieActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(AddEditMovieActivity.this, "updated the movie", Toast.LENGTH_SHORT).show();
+                showToast("updated the movie");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(AddEditMovieActivity.this, "Failed to update", Toast.LENGTH_SHORT).show();
+                showToast("Failed to update");
 
             }
         });
     }
 
     private void fetchSeries() {
-        SeriesApi seriesApi = new SeriesApi();
-        SeriesService seriesService = seriesApi.createSeriesService();
-        Call<List<Series>> call = seriesService.fetchData();
+        setupApiService();
+        Call<List<Series>> call = crudService.fetchSeries();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
@@ -146,14 +142,13 @@ public class AddEditMovieActivity extends AppCompatActivity {
         call.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {
-                Toast.makeText(AddEditMovieActivity.this, "successfully added movie", Toast.LENGTH_SHORT).show();
+                showToast("successfully added movie");
                 finish();
             }
 
             @Override
             public void onFailure(Call<Movie> call, Throwable t) {
-                Toast.makeText(AddEditMovieActivity.this, "failed to add movie", Toast.LENGTH_SHORT).show();
-
+                showToast("Failed to add movie");
             }
         });
     }
@@ -183,5 +178,10 @@ public class AddEditMovieActivity extends AppCompatActivity {
         seriesSp = findViewById(R.id.series_sp);
         imageUrlTextTxt = findViewById(R.id.image_url_text_txt);
         descriptionTextTxt = findViewById(R.id.description_text_txt);
+    }
+
+    private void showToast(String movie) {
+        Toast.makeText(AddEditMovieActivity.this, movie, Toast.LENGTH_SHORT).show();
+
     }
 }

@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.crud.Api.CrudApi;
+import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 
@@ -29,6 +31,7 @@ public class SeriesListActivity extends AppCompatActivity {
     private RecyclerView seriesRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,13 @@ public class SeriesListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_series_list);
         Log.i("SeriesListActivity", "OnCreate called");
         getSupportActionBar().setTitle("Series");
+        setupApiService();
         setSeriesRv();
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     private void updateSeries(Series series) {
@@ -46,13 +55,12 @@ public class SeriesListActivity extends AppCompatActivity {
     }
 
     private void deleteSeries(String id) {
-        SeriesApi seriesApi = new SeriesApi();
-        SeriesService seriesService = seriesApi.createSeriesService();
-        Call<Void> call = seriesService.deleteSeries(id);
+        setupApiService();
+        Call<Void> call = crudService.deleteSeries(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-
+                showToast("Deleted series successfully");
             }
 
             @Override
@@ -88,16 +96,15 @@ public class SeriesListActivity extends AppCompatActivity {
 
     private void fetchSeries() {
         showVisibility();
-        SeriesApi seriesApi = new SeriesApi();
-        SeriesService seriesService = seriesApi.createSeriesService();
-        Call<List<Series>> call = seriesService.fetchData();
+        setupApiService();
+        Call<List<Series>> call = crudService.fetchSeries();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
                 hideVisibility();
                 List<Series> seriesList = response.body();
                 seriesAdapter.setupData(seriesList);
-                Toast.makeText(SeriesListActivity.this, "Successfully fetch the data", Toast.LENGTH_SHORT).show();
+                showToast("Successfully fetch the data");
             }
 
             @Override
@@ -118,7 +125,7 @@ public class SeriesListActivity extends AppCompatActivity {
             public void onDelete(String id) {
                 deleteSeries(id);
                 fetchSeries();
-                Toast.makeText(SeriesListActivity.this, "Successfully delete series", Toast.LENGTH_SHORT).show();
+                showToast("Successfully delete series");
             }
 
             @Override
@@ -135,5 +142,9 @@ public class SeriesListActivity extends AppCompatActivity {
 
     private void hideVisibility() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    private void showToast(String series) {
+        Toast.makeText(SeriesListActivity.this, series, Toast.LENGTH_SHORT).show();
     }
 }

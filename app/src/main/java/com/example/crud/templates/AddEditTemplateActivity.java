@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.crud.Api.CrudApi;
+import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 
@@ -19,11 +21,13 @@ import retrofit2.Response;
 public class AddEditTemplateActivity extends AppCompatActivity {
     EditText messageTxt;
     Template template;
+    CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_template);
+        setupApiService();
         initView();
         if (getIntent().hasExtra(Constants.KEY_TEMPLATE)) {
             getSupportActionBar().setTitle("Edit Template");
@@ -32,6 +36,11 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         } else {
             getSupportActionBar().setTitle("Add Template");
         }
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     @Override
@@ -67,13 +76,12 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         template = new Template();
         template.messageText = messageTxt;
 
-        TemplatesApi templatesApi = new TemplatesApi();
-        TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Void> call = templatesService.editTemplate(id, template);
+        setupApiService();
+        Call<Void> call = crudService.editTemplate(id, template);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(AddEditTemplateActivity.this, "Successfully updated template", Toast.LENGTH_SHORT).show();
+                showToast("Successfully updated template");
                 finish();
             }
 
@@ -88,13 +96,12 @@ public class AddEditTemplateActivity extends AppCompatActivity {
         template = new Template();
         template.messageText = messageText;
 
-        TemplatesApi templatesApi = new TemplatesApi();
-        TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Template> call = templatesService.addTemplate(template);
+        setupApiService();
+        Call<Template> call = crudService.addTemplate(template);
         call.enqueue(new Callback<Template>() {
             @Override
             public void onResponse(Call<Template> call, Response<Template> response) {
-                Toast.makeText(AddEditTemplateActivity.this, "Successfully added the template", Toast.LENGTH_SHORT).show();
+                showToast("Successfully added the template");
                 finish();
             }
 
@@ -103,5 +110,9 @@ public class AddEditTemplateActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void showToast(String template) {
+        Toast.makeText(AddEditTemplateActivity.this, template, Toast.LENGTH_SHORT).show();
     }
 }

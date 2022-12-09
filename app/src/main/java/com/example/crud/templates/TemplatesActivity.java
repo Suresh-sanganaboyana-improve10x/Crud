@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.crud.Api.CrudApi;
+import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 
@@ -30,14 +32,22 @@ public class TemplatesActivity extends AppCompatActivity {
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
     private ProgressBar progressBar;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
+        setupApiService();
         Log.i("TemplatesActivity", "OnCreate called");
         getSupportActionBar().setTitle("Templates");
         setupRecyclerViewForTemplates();
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
+
     }
 
     private void setEditTemplate(Template templates) {
@@ -47,9 +57,8 @@ public class TemplatesActivity extends AppCompatActivity {
     }
 
     private void setDeleteTemplate(String id) {
-        TemplatesApi templatesApi = new TemplatesApi();
-        TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<Void> call = templatesService.deleteTemplate(id);
+        setupApiService();
+        Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -90,9 +99,8 @@ public class TemplatesActivity extends AppCompatActivity {
 
     private void fetchData() {
         showVisible();
-        TemplatesApi templatesApi = new TemplatesApi();
-        TemplatesService templatesService = templatesApi.createTemplatesService();
-        Call<List<Template>> call = templatesService.fetchTemplate();
+        setupApiService();
+        Call<List<Template>> call = crudService.fetchTemplate();
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {

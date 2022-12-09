@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.crud.Api.CrudApi;
+import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 
@@ -21,11 +23,13 @@ public class AddEditSeriesActivity extends AppCompatActivity {
     private EditText seriesIdTxt;
     private EditText seriesNameTxt;
     private EditText seriesUrlTxt;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_series);
+        setupApiService();
         initView();
         if (getIntent().hasExtra(Constants.KEY_SERIES)) {
             getSupportActionBar().setTitle("Edit series");
@@ -34,6 +38,11 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         } else {
             getSupportActionBar().setTitle("Add series");
         }
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     private void initView() {
@@ -77,9 +86,8 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         series.title = title;
         series.imageUrl = imageUrl;
 
-        SeriesApi seriesApi = new SeriesApi();
-        SeriesService seriesService = seriesApi.createSeriesService();
-        Call<Void> call = seriesService.editSeries(id, series);
+        setupApiService();
+        Call<Void> call = crudService.editSeries(id, series);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -100,9 +108,8 @@ public class AddEditSeriesActivity extends AppCompatActivity {
         series.title = title;
         series.imageUrl = imageUrl;
 
-        SeriesApi seriesApi = new SeriesApi();
-        SeriesService seriesService = seriesApi.createSeriesService();
-        Call<Series> call = seriesService.addSeries(series);
+        setupApiService();
+        Call<Series> call = crudService.addSeries(series);
         call.enqueue(new Callback<Series>() {
             @Override
             public void onResponse(Call<Series> call, Response<Series> response) {

@@ -78,7 +78,7 @@ public class MoviesActivity extends AppCompatActivity {
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
                 List<Movie> movieList = response.body();
                 moviesAdapter.setData(movieList);
-                Toast.makeText(MoviesActivity.this, "Successfully fetch movies", Toast.LENGTH_SHORT).show();
+                showToast("Successfully fetch movies");
             }
 
             @Override
@@ -113,13 +113,13 @@ public class MoviesActivity extends AppCompatActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(MoviesActivity.this, "delete movie successfully", Toast.LENGTH_SHORT).show();
+                showToast("delete movie successfully");
                 setGetMovie();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(MoviesActivity.this, "failed to delete movie", Toast.LENGTH_SHORT).show();
+                showToast("failed to delete movie");
             }
         });
     }
@@ -128,5 +128,10 @@ public class MoviesActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddEditMovieActivity.class);
         intent.putExtra(Constants.KEY_MOVIE, movie);
         startActivity(intent);
+    }
+
+    private void showToast(String movie) {
+        Toast.makeText(MoviesActivity.this, movie, Toast.LENGTH_SHORT).show();
+
     }
 }
