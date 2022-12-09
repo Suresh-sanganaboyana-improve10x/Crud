@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.crud.Api.CrudApi;
+import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.series.Series;
@@ -33,6 +35,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
     private EditText imageUrlTextTxt;
     private EditText descriptionTextTxt;
     private Movie movie;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class AddEditMovieActivity extends AppCompatActivity {
         initViews();
         setupSeriesSp();
         fetchSeries();
+        setupApiService();
         if (getIntent().hasExtra(Constants.KEY_MOVIE)) {
             getSupportActionBar().setTitle("Edit Movie");
             movie = (Movie) getIntent().getSerializableExtra(Constants.KEY_MOVIE);
@@ -48,6 +52,11 @@ public class AddEditMovieActivity extends AppCompatActivity {
         } else {
             getSupportActionBar().setTitle("Add movie");
         }
+    }
+
+    private void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     @Override
@@ -85,9 +94,8 @@ public class AddEditMovieActivity extends AppCompatActivity {
         movie.name = title;
         movie.description = description;
 
-        MovieApi movieApi = new MovieApi();
-        MoviesService moviesService = movieApi.setMovieService();
-        Call<Void> call = moviesService.editMovie(id, movie);
+        setupApiService();
+        Call<Void> call = crudService.editMovie(id, movie);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -133,9 +141,8 @@ public class AddEditMovieActivity extends AppCompatActivity {
         movie.name = title;
         movie.description = description;
 
-        MovieApi movieApi = new MovieApi();
-        MoviesService moviesService = movieApi.setMovieService();
-        Call<Movie> call = moviesService.createMovie(movie);
+        setupApiService();
+        Call<Movie> call = crudService.createMovie(movie);
         call.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {

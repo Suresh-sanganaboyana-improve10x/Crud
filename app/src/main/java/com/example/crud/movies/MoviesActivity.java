@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.crud.Api.CrudApi;
+import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.series.AddEditSeriesActivity;
@@ -27,14 +29,21 @@ public class MoviesActivity extends AppCompatActivity {
     private ArrayList<Movie> movieList = new ArrayList<>();
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
+    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+        setupApiService();
         Log.i("MoviesActivity" , "OnCreate called");
         getSupportActionBar().setTitle("Movies");
         setRecyclerView();
+    }
+
+    public void setupApiService() {
+        CrudApi crudApi = new CrudApi();
+        crudService = crudApi.createCrudService();
     }
 
     @Override
@@ -62,9 +71,8 @@ public class MoviesActivity extends AppCompatActivity {
     }
 
     private void setGetMovie() {
-        MovieApi movieApi = new MovieApi();
-        MoviesService moviesService = movieApi.setMovieService();
-        Call<List<Movie>> call = moviesService.fetchMovies();
+        setupApiService();
+        Call<List<Movie>> call = crudService.fetchMovies();
         call.enqueue(new Callback<List<Movie>>() {
             @Override
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
@@ -100,9 +108,8 @@ public class MoviesActivity extends AppCompatActivity {
     }
 
     private void deleteMovie(String id) {
-        MovieApi movieApi = new MovieApi();
-        MoviesService moviesService = movieApi.setMovieService();
-        Call<Void> call = moviesService.deleteMovie(id);
+        setupApiService();
+        Call<Void> call = crudService.deleteMovie(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

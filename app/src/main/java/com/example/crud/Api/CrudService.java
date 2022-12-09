@@ -2,6 +2,7 @@ package com.example.crud.Api;
 
 import com.example.crud.Constants;
 import com.example.crud.messages.Message;
+import com.example.crud.movies.Movie;
 
 import java.util.List;
 
@@ -27,5 +28,15 @@ public interface CrudService {
     @PUT(Constants.MESSAGES_END_POINT + "/{id}")
     Call<Void> editMessage(@Path("id") String id, @Body Message message);
 
+    @GET(Constants.MOVIES_END_POINT)
+    Call<List<Movie>> fetchMovies();
 
+    @POST(Constants.MOVIES_END_POINT)
+    Call<Movie> createMovie(@Body Movie movie);
+
+    @DELETE(Constants.MOVIES_END_POINT + "/{id}")
+    Call<Void> deleteMovie(@Path("id") String id);
+
+    @PUT(Constants.MOVIES_END_POINT + "/{id}")
+    Call<Void> editMovie(@Path("id") String id, @Body Movie movie);
 }
