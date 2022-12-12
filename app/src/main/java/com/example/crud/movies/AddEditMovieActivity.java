@@ -14,6 +14,7 @@ import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.base.BaseActivity;
 import com.example.crud.series.Series;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddEditMovieActivity extends AppCompatActivity {
+public class AddEditMovieActivity extends BaseActivity {
 
     private Spinner seriesSp;
     private CustomSeriesAdapter customSeriesAdapter;
@@ -178,10 +179,5 @@ public class AddEditMovieActivity extends AppCompatActivity {
         seriesSp = findViewById(R.id.series_sp);
         imageUrlTextTxt = findViewById(R.id.image_url_text_txt);
         descriptionTextTxt = findViewById(R.id.description_text_txt);
-    }
-
-    private void showToast(String movie) {
-        Toast.makeText(AddEditMovieActivity.this, movie, Toast.LENGTH_SHORT).show();
-
     }
 }

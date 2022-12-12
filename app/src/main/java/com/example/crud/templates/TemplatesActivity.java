@@ -18,6 +18,7 @@ import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TemplatesActivity extends AppCompatActivity {
+public class TemplatesActivity extends BaseActivity {
 
     private ArrayList<Template> templatesArrayList = new ArrayList<>();
     private RecyclerView templatesRv;
@@ -39,7 +40,7 @@ public class TemplatesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
         setupApiService();
-        Log.i("TemplatesActivity", "OnCreate called");
+        log("onCreate");
         getSupportActionBar().setTitle("Templates");
         setupRecyclerViewForTemplates();
     }
@@ -93,7 +94,7 @@ public class TemplatesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("Templates", "OnResume called");
+        log("onResume");
         fetchData();
     }
 

@@ -13,12 +13,13 @@ import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.base.BaseActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddEditTemplateActivity extends AppCompatActivity {
+public class AddEditTemplateActivity extends BaseActivity {
     EditText messageTxt;
     Template template;
     CrudService crudService;
@@ -110,9 +111,5 @@ public class AddEditTemplateActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void showToast(String template) {
-        Toast.makeText(AddEditTemplateActivity.this, template, Toast.LENGTH_SHORT).show();
     }
 }

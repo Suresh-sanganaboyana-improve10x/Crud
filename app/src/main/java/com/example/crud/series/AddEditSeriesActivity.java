@@ -13,12 +13,13 @@ import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.base.BaseActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddEditSeriesActivity extends AppCompatActivity {
+public class AddEditSeriesActivity extends BaseActivity {
     private Series series;
     private EditText seriesIdTxt;
     private EditText seriesNameTxt;

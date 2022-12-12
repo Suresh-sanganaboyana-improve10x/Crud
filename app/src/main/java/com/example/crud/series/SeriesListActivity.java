@@ -18,6 +18,7 @@ import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SeriesListActivity extends AppCompatActivity {
+public class SeriesListActivity extends BaseActivity {
+
     private ArrayList<Series> seriesList = new ArrayList<>();
     private RecyclerView seriesRv;
     private SeriesAdapter seriesAdapter;
@@ -37,7 +39,7 @@ public class SeriesListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_series_list);
-        Log.i("SeriesListActivity", "OnCreate called");
+        log("onCreate");
         getSupportActionBar().setTitle("Series");
         setupApiService();
         setSeriesRv();
@@ -90,7 +92,7 @@ public class SeriesListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("SeriesListActivity", "OnResume called");
+        log("onResume");
         fetchSeries();
     }
 
@@ -142,9 +144,5 @@ public class SeriesListActivity extends AppCompatActivity {
 
     private void hideVisibility() {
         progressBar.setVisibility(View.GONE);
-    }
-
-    private void showToast(String series) {
-        Toast.makeText(SeriesListActivity.this, series, Toast.LENGTH_SHORT).show();
     }
 }

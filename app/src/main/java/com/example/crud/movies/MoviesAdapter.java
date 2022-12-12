@@ -20,6 +20,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         movieArrayList = movies;
         notifyDataSetChanged();
     }
+
     public void setOnItemActionListener(OnItemActionListener actionListener) {
         onItemActionListener = actionListener;
     }

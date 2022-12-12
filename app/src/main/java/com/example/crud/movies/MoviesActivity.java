@@ -1,22 +1,21 @@
 package com.example.crud.movies;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
-import com.example.crud.series.AddEditSeriesActivity;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,20 +24,29 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MoviesActivity extends AppCompatActivity {
+public class MoviesActivity extends BaseActivity {
     private ArrayList<Movie> movieList = new ArrayList<>();
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
     private CrudService crudService;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
         setupApiService();
-        Log.i("MoviesActivity" , "OnCreate called");
+        log("onCreate");
         getSupportActionBar().setTitle("Movies");
         setRecyclerView();
+    }
+
+    private void showVisibility() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideVisibility() {
+        progressBar.setVisibility(View.GONE);
     }
 
     public void setupApiService() {
@@ -66,16 +74,18 @@ public class MoviesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("MoviesActivity" , "OnResume called");
-        setGetMovie();
+        log("onResume");
+        fetchMovies();
     }
 
-    private void setGetMovie() {
+    private void fetchMovies() {
+        showVisibility();
         setupApiService();
         Call<List<Movie>> call = crudService.fetchMovies();
         call.enqueue(new Callback<List<Movie>>() {
             @Override
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
+                hideVisibility();
                 List<Movie> movieList = response.body();
                 moviesAdapter.setData(movieList);
                 showToast("Successfully fetch movies");
@@ -83,12 +93,13 @@ public class MoviesActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-
+                hideVisibility();
             }
         });
     }
 
     private void setRecyclerView() {
+        progressBar = findViewById(R.id.progress_bar);
         moviesRv = findViewById(R.id.movies_rv);
         moviesRv.setLayoutManager(new GridLayoutManager(this, 2));
         moviesAdapter = new MoviesAdapter();
@@ -114,7 +125,7 @@ public class MoviesActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showToast("delete movie successfully");
-                setGetMovie();
+                fetchMovies();
             }
 
             @Override
@@ -128,10 +139,5 @@ public class MoviesActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddEditMovieActivity.class);
         intent.putExtra(Constants.KEY_MOVIE, movie);
         startActivity(intent);
-    }
-
-    private void showToast(String movie) {
-        Toast.makeText(MoviesActivity.this, movie, Toast.LENGTH_SHORT).show();
-
     }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -13,12 +14,13 @@ import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.base.BaseActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddEditMessageActivity extends AppCompatActivity {
+public class AddEditMessageActivity extends BaseActivity {
     private Message message;
     private EditText nameTxt;
     private EditText phoneNumberTxt;
@@ -29,8 +31,9 @@ public class AddEditMessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_message);
-        initViews();
         setupApiService();
+        initViews();
+        log("onCreate");
         if (getIntent().hasExtra(Constants.KEY_MESSAGE)) {
             getSupportActionBar().setTitle("Edit Message");
             message = (Message) getIntent().getSerializableExtra(Constants.KEY_MESSAGE);
@@ -122,10 +125,5 @@ public class AddEditMessageActivity extends AppCompatActivity {
         nameTxt = findViewById(R.id.name_txt);
         phoneNumberTxt = findViewById(R.id.phone_number_txt);
         messageTxt = findViewById(R.id.message_txt);
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(AddEditMessageActivity.this, message, Toast.LENGTH_SHORT).show();
-
     }
 }

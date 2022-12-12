@@ -18,6 +18,7 @@ import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
+import com.example.crud.base.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MessagesActivity extends AppCompatActivity {
+public class MessagesActivity extends BaseActivity {
     private ArrayList<Message> messagesArrayList = new ArrayList<>();
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
@@ -37,7 +38,7 @@ public class MessagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
-        Log.i("MessageActivity", "OnCreate called");
+        log("onCreate");
         getSupportActionBar().setTitle("Messages");
 
         setupRecyclerViewForMessages();
@@ -74,7 +75,7 @@ public class MessagesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("MessageActivity", "OnResume called");
+        log("onResume");
         fetchData();
     }
 
@@ -143,10 +144,5 @@ public class MessagesActivity extends AppCompatActivity {
 
     private void hideVisible() {
         progressBar.setVisibility(View.GONE);
-    }
-
-    private void showToast(String messages) {
-        Toast.makeText(MessagesActivity.this, messages, Toast.LENGTH_SHORT).show();
-
     }
 }
