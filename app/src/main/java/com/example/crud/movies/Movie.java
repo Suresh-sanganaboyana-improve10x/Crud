@@ -16,5 +16,5 @@ public class Movie implements Serializable {
     public String movieId;
     public String name;
     public String seriesId;
-    }
+}
 

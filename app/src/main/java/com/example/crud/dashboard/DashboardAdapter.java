@@ -17,10 +17,13 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
+
     private ArrayList<Dashboard> dashboardList;
+
     public void setupData(ArrayList<Dashboard> dashboards) {
         dashboardList = dashboards;
     }
+
     @NonNull
     @Override
     public DashboardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -27,12 +27,12 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // rename id name "done"
         if (item.getItemId() == R.id.add_edit) {
             String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
             String imageUrl = seriesUrlTxt.getText().toString();
             updateSeries(series.id, seriesId, title, imageUrl);
-
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -61,7 +61,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                showToast("Edit failed");
+                showToast("failed to edit series");
             }
         });
     }

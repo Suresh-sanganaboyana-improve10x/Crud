@@ -21,6 +21,7 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // rename the id to done
         if (item.getItemId() == R.id.edit) {
             String message = messageTxt.getText().toString();
             addTemplate(message);
@@ -45,7 +46,7 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
 
             @Override
             public void onFailure(Call<Template> call, Throwable t) {
-
+                //Toast
             }
         });
     }

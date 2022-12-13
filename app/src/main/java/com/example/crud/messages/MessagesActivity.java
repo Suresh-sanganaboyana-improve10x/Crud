@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
+    // rename the object Name to messageList
     private ArrayList<Message> messagesArrayList = new ArrayList<>();
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
@@ -37,7 +38,6 @@ public class MessagesActivity extends BaseActivity {
         setContentView(R.layout.activity_messages);
         log("onCreate");
         getSupportActionBar().setTitle("Messages");
-
         setupRecyclerViewForMessages();
         setupApiService();
     }
@@ -54,17 +54,17 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void setOnDeleteMessage(String id) {
-        setupApiService();
         Call<Void> call = crudService.deleteMessage(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showToast("Deleted the message");
+                fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                showToast("Failed to delete message");
             }
         });
     }
@@ -95,7 +95,6 @@ public class MessagesActivity extends BaseActivity {
 
     private void fetchData() {
         showVisible();
-        setupApiService();
         Call<List<Message>> call = crudService.fetchMessages();
         call.enqueue(new Callback<List<Message>>() {
             @Override
@@ -109,11 +108,11 @@ public class MessagesActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Message>> call, Throwable t) {
                 hideVisible();
-
+                showToast("Failed fetch data");
             }
         });
     }
-
+    // method name change to setupMessagesRv
     private void setupRecyclerViewForMessages() {
         progressBar = findViewById(R.id.progress_bar);
         messagesRv = findViewById(R.id.messages_rv);

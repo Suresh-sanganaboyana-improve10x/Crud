@@ -4,6 +4,6 @@ package com.example.crud.templates;
 public interface OnItemActionListener {
 
     void onDelete(String id);
-    void onEdit(Template templates);
 
+    void onEdit(Template templates);
 }

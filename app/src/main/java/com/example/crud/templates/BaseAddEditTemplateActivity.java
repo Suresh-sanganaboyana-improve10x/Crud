@@ -18,6 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BaseAddEditTemplateActivity extends BaseActivity {
+
     EditText messageTxt;
     Template template;
     CrudService crudService;

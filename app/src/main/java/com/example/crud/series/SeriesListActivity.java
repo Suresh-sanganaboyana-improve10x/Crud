@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class SeriesListActivity extends BaseActivity {
 
     private ArrayList<Series> seriesList = new ArrayList<>();
+    // rename the seriesListRv// doubt
     private RecyclerView seriesRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
@@ -54,17 +55,17 @@ public class SeriesListActivity extends BaseActivity {
     }
 
     private void deleteSeries(String id) {
-        setupApiService();
         Call<Void> call = crudService.deleteSeries(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showToast("Deleted series successfully");
+                fetchSeries();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                showToast("Failed to delete series");
             }
         });
     }
@@ -95,7 +96,6 @@ public class SeriesListActivity extends BaseActivity {
 
     private void fetchSeries() {
         showVisibility();
-        setupApiService();
         Call<List<Series>> call = crudService.fetchSeries();
         call.enqueue(new Callback<List<Series>>() {
             @Override
@@ -109,10 +109,11 @@ public class SeriesListActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Series>> call, Throwable t) {
                 hideVisibility();
+                //Toast
             }
         });
     }
-
+    // rename method name
     private void setSeriesRv() {
         progressBar = findViewById(R.id.progress_bar);
         seriesRv = findViewById(R.id.series_rv);
@@ -123,13 +124,13 @@ public class SeriesListActivity extends BaseActivity {
             @Override
             public void onDelete(String id) {
                 deleteSeries(id);
-                fetchSeries();
                 showToast("Successfully delete series");
             }
 
             @Override
             public void onEdit(Series series) {
                 updateSeries(series);
+                //Toast
             }
         });
         seriesRv.setAdapter(seriesAdapter);

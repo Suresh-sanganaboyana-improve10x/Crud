@@ -46,6 +46,7 @@ public interface CrudService {
     Call<List<Series>> fetchSeries();
 
     @POST(Constants.SERIES_END_POINT)
+    //addSeries rename to createSeries
     Call<Series> addSeries(@Body Series series);
 
     @DELETE(Constants.SERIES_END_POINT + "/{id}")
@@ -58,6 +59,7 @@ public interface CrudService {
     Call<List<Template>> fetchTemplate();
 
     @POST(Constants.TEMPLATES_END_POINT)
+    // addTemplate rename to createTemplate
     Call<Template> addTemplate(@Body Template templates);
 
     @DELETE(Constants.TEMPLATES_END_POINT + "/{id}")

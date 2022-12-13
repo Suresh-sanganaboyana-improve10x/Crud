@@ -21,14 +21,12 @@ public class AddMessageActivity extends BaseAddEditMessageActivity{
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //rename id (edit to done)
         if (item.getItemId() == R.id.edit) {
             String name = nameTxt.getText().toString();
             String phoneNumber = phoneNumberTxt.getText().toString();
             String message = messageTxt.getText().toString();
-            if (this.message == null) {
-                addMessage(name, phoneNumber, message);
-            } else {
-            }
+            addMessage(name, phoneNumber, message);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -41,7 +39,6 @@ public class AddMessageActivity extends BaseAddEditMessageActivity{
         message.phoneNumberText = phoneNumber;
         message.messageText = messageTxt;
 
-        setupApiService();
         Call<Message> call = crudService.createMessage(message);
         call.enqueue(new Callback<Message>() {
             @Override

@@ -19,6 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BaseAddEditSeriesActivity extends BaseActivity {
+
     protected Series series;
     protected EditText seriesIdTxt;
     protected EditText seriesNameTxt;
@@ -49,12 +50,4 @@ public class BaseAddEditSeriesActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.add_edit_series_menu, menu);
         return true;
     }
-
-
-
-
-
-
-
-
 }

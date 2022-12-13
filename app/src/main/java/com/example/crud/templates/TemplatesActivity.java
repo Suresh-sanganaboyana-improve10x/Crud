@@ -26,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TemplatesActivity extends BaseActivity {
-
+    // rename variable remove array word
     private ArrayList<Template> templatesArrayList = new ArrayList<>();
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
@@ -48,26 +48,26 @@ public class TemplatesActivity extends BaseActivity {
         crudService = crudApi.createCrudService();
 
     }
-
+    // rename method
     private void setEditTemplate(Template templates) {
         Intent intent = new Intent(this, EditTemplateActivity.class);
         intent.putExtra(Constants.KEY_TEMPLATE, templates);
         startActivity(intent);
     }
-
+    // rename method
     private void setDeleteTemplate(String id) {
         setupApiService();
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(TemplatesActivity.this, "Successfully delete the template", Toast.LENGTH_SHORT).show();
+                showToast("Successfully delete the template");
                 fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                //Toast
             }
         });
     }
@@ -98,12 +98,12 @@ public class TemplatesActivity extends BaseActivity {
 
     private void fetchData() {
         showVisible();
-        setupApiService();
         Call<List<Template>> call = crudService.fetchTemplate();
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
                 hideVisible();
+              // showToast
                 Toast.makeText(TemplatesActivity.this, "Successfully fetch the data", Toast.LENGTH_SHORT).show();
                 List<Template> templatesList = response.body();
                 templatesAdapter.setData(templatesList);
@@ -111,12 +111,13 @@ public class TemplatesActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
+                //showToast
                 Toast.makeText(TemplatesActivity.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
                 hideVisible();
             }
         });
     }
-
+    // rename method name
     private void setupRecyclerViewForTemplates() {
         progressBar = findViewById(R.id.progress_bar);
         templatesRv = findViewById(R.id.templates_rv);

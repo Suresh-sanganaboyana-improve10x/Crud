@@ -25,6 +25,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoviesActivity extends BaseActivity {
+
     private ArrayList<Movie> movieList = new ArrayList<>();
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
@@ -62,6 +63,7 @@ public class MoviesActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // id name change ("add)
         if (item.getItemId() == R.id.movie_add_item) {
             Intent intent = new Intent(this, AddMovieActivity.class);
             startActivity(intent);
@@ -80,7 +82,6 @@ public class MoviesActivity extends BaseActivity {
 
     private void fetchMovies() {
         showVisibility();
-        setupApiService();
         Call<List<Movie>> call = crudService.fetchMovies();
         call.enqueue(new Callback<List<Movie>>() {
             @Override
@@ -94,10 +95,11 @@ public class MoviesActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
                 hideVisibility();
+                showToast("Failed to load data");
             }
         });
     }
-
+    //change method name ("setupMoviesRv")
     private void setRecyclerView() {
         progressBar = findViewById(R.id.progress_bar);
         moviesRv = findViewById(R.id.movies_rv);
@@ -108,18 +110,19 @@ public class MoviesActivity extends BaseActivity {
             @Override
             public void onDelete(String id) {
                 deleteMovie(id);
+                showToast("Successfully deleted a movie");
             }
 
             @Override
             public void onEdit(Movie movie) {
                 setEditMovie(movie);
+                showToast("Failed to load data");
             }
         });
         moviesRv.setAdapter(moviesAdapter);
     }
 
     private void deleteMovie(String id) {
-        setupApiService();
         Call<Void> call = crudService.deleteMovie(id);
         call.enqueue(new Callback<Void>() {
             @Override
@@ -134,7 +137,7 @@ public class MoviesActivity extends BaseActivity {
             }
         });
     }
-
+    // method name change "editMovie"
     private void setEditMovie(Movie movie) {
         Intent intent = new Intent(this, EditMovieActivity.class);
         intent.putExtra(Constants.KEY_MOVIE, movie);

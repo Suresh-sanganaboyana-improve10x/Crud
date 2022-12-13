@@ -27,7 +27,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
 
     protected Spinner seriesSp;
     protected CustomSeriesAdapter customSeriesAdapter;
-    protected ArrayList<Series> seriesList = new ArrayList<>();
+    private ArrayList<Series> seriesList = new ArrayList<>();
     protected EditText movieIdTextTxt;
     protected EditText movieNameTextTxt;
     protected EditText imageUrlTextTxt;
@@ -57,12 +57,11 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     private void fetchSeries() {
-        setupApiService();
         Call<List<Series>> call = crudService.fetchSeries();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
-                Toast.makeText(BaseAddEditMovieActivity.this, "fetch series ", Toast.LENGTH_SHORT).show();
+                showToast("Successfully fetch seriesList");
                 List<Series> seriesList1 = response.body();
                 customSeriesAdapter.addAll(seriesList1);
                 if (movie != null) {
@@ -72,7 +71,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Series>> call, Throwable t) {
-
+                showToast("Failed to fetch seriesList");
             }
         });
     }

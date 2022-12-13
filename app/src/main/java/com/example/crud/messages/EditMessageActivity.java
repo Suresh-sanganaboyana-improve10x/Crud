@@ -31,7 +31,6 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
             String phoneNumber = phoneNumberTxt.getText().toString();
             String message = messageTxt.getText().toString();
             updateMessage(this.message.id, name, phoneNumber, message);
-
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -50,7 +49,6 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
         message.phoneNumberText = phoneNumber;
         message.messageText = messageText;
 
-        setupApiService();
         Call<Void> call = crudService.editMessage(id, message);
         call.enqueue(new Callback<Void>() {
             @Override
@@ -61,7 +59,7 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                showToast("Failed to message update");
             }
         });
     }

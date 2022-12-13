@@ -11,6 +11,7 @@ import com.example.crud.R;
 import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
+    // dashboards doubt
     private ArrayList<Dashboard> dashboards;
     private RecyclerView dashboardRv;
     private DashboardAdapter dashboardAdapter;
@@ -21,10 +22,10 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().setTitle("Dashboard");
         setupData();
-        setupDashboardsRv();
+        setupDashboardRv();
     }
 
-    private void setupDashboardsRv() {
+    private void setupDashboardRv() {
         dashboardRv = findViewById(R.id.dashboard_rv);
         dashboardRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardAdapter = new DashboardAdapter();

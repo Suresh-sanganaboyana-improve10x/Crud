@@ -13,7 +13,7 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    protected void showToastLong(String message) {
+    protected void showLongToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

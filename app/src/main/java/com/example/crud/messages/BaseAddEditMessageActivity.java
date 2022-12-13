@@ -18,6 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BaseAddEditMessageActivity extends BaseActivity {
+
     protected Message message;
     protected EditText nameTxt;
     protected EditText phoneNumberTxt;
