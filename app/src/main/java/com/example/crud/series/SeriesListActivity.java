@@ -1,18 +1,15 @@
 package com.example.crud.series;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.crud.Api.CrudApi;
 import com.example.crud.Api.CrudService;
@@ -51,7 +48,7 @@ public class SeriesListActivity extends BaseActivity {
     }
 
     private void updateSeries(Series series) {
-        Intent intent = new Intent(this, AddEditSeriesActivity.class);
+        Intent intent = new Intent(this, EditSeriesActivity.class);
         intent.putExtra(Constants.KEY_SERIES, series);
         startActivity(intent);
     }
@@ -81,7 +78,7 @@ public class SeriesListActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.add){
-            Intent intent = new Intent(this, AddEditSeriesActivity.class);
+            Intent intent = new Intent(this, AddSeriesActivity.class);
             startActivity(intent);
             return true;
         } else {
