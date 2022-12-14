@@ -24,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TemplatesActivity extends BaseActivity {
-
+    //TODO : object Name change to Templates
     private ArrayList<Template> templatesList = new ArrayList<>();
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
@@ -48,6 +48,7 @@ public class TemplatesActivity extends BaseActivity {
     }
 
     private void deleteTemplate(String id) {
+        //TODO : call here show progressBar method
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override

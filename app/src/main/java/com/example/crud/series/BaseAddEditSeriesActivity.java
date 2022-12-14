@@ -19,8 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BaseAddEditSeriesActivity extends BaseActivity {
-
-    private Series series;
+    //TODO : Class object names will be (TextTxt)
     protected EditText seriesIdTxt;
     protected EditText seriesNameTxt;
     protected EditText seriesUrlTxt;

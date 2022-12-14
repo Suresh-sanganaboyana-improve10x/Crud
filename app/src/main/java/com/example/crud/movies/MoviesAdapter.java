@@ -16,7 +16,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     private List<Movie> movieList;
     private OnItemActionListener onItemActionListener;
-
+    //TODO : give default method for setData and setOnItemActionListener and use this key word for that
     public void setData(List<Movie> movies) {
         movieList = movies;
         notifyDataSetChanged();

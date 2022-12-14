@@ -29,7 +29,6 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // rename id name "done"
         if (item.getItemId() == R.id.done) {
             String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
@@ -48,6 +47,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
     }
 
     private void updateSeries(String id, String seriesId, String title, String imageUrl) {
+        //TODO : create Constructor for Series
         series = new Series();
         series.seriesId = seriesId;
         series.title = title;

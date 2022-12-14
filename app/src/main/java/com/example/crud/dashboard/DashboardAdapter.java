@@ -15,11 +15,11 @@ import com.example.crud.messages.MessagesActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
+    //TODO : change the DashboardAdapter to DashboardItemsAdapter
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
-
+    //TODO : change name dashboardList to dashboardItems;
     private ArrayList<Dashboard> dashboardList;
-
+    //TODO : method name change to setData
     public void setupData(ArrayList<Dashboard> dashboards) {
         dashboardList = dashboards;
     }
@@ -41,7 +41,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
             if (holder.titleTxt.getText().toString().equalsIgnoreCase("Message")) {
                 Intent intent = new Intent(holder.itemView.getContext(), MessagesActivity.class);
                 holder.itemView.getContext().startActivity(intent);
-
+            //TODO : remove extra lines in this onBindViewHolder
             } else if (holder.titleTxt.getText().toString().equalsIgnoreCase("Templates")) {
                 Intent intent = new Intent(holder.itemView.getContext(), TemplatesActivity.class);
                 holder.itemView.getContext().startActivity(intent);

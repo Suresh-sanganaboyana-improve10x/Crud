@@ -15,7 +15,7 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
 
     private OnItemActionListener onItemActionListener;
     private List<Template> templateList;
-
+    //TODO : give default method
     public void setData(List<Template> templates) {
         templateList = templates;
         notifyDataSetChanged();
@@ -33,7 +33,6 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TemplateViewHolder holder, int position) {
-        // rename object template to template
         Template template = templateList.get(position);
         holder.messageTextTxt.setText(template.messageText);
         holder.deleteImgBtn.setOnClickListener(view -> {

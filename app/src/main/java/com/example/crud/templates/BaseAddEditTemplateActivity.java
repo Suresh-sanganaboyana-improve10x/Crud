@@ -20,7 +20,6 @@ import retrofit2.Response;
 public class BaseAddEditTemplateActivity extends BaseActivity {
 
     protected EditText messageTxt;
-    private Template template;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

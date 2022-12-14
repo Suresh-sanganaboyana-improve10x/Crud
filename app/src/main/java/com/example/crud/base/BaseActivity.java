@@ -26,6 +26,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void showLongToast(String message) {
+        //TODO : change length_short to Length_long
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

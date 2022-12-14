@@ -58,7 +58,6 @@ public class MoviesActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // id name change ("add)
         if (item.getItemId() == R.id.add) {
             Intent intent = new Intent(this, AddMovieActivity.class);
             startActivity(intent);
@@ -124,6 +123,7 @@ public class MoviesActivity extends BaseActivity {
     }
 
     private void deleteMovie(String id) {
+        //TODO : call here progressBar showVisibility when delete the movie
         Call<Void> call = crudService.deleteMovie(id);
         call.enqueue(new Callback<Void>() {
             @Override

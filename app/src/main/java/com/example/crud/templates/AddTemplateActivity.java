@@ -21,7 +21,6 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // rename the id to done
         if (item.getItemId() == R.id.done) {
             String message = messageTxt.getText().toString();
             addTemplate(message);
@@ -33,6 +32,7 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
     }
 
     private void addTemplate(String messageText) {
+        //TODO : create constructor for Template
         Template template = new Template();
         template.messageText = messageText;
 
@@ -46,7 +46,7 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
 
             @Override
             public void onFailure(Call<Template> call, Throwable t) {
-                //Toast
+                //TODO : call show 'toast for Failed to add the Template'
             }
         });
     }

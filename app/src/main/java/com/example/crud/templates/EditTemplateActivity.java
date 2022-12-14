@@ -20,6 +20,7 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getIntent().hasExtra(Constants.KEY_TEMPLATE)) {
+            //TODO : SetTitle call before if condition
             getSupportActionBar().setTitle("Edit Template");
             template = (Template) getIntent().getSerializableExtra(Constants.KEY_TEMPLATE);
             showData();
@@ -28,7 +29,6 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // rename id name "done"
         if (item.getItemId() == R.id.done) {
             String message = messageTxt.getText().toString();
             updateTemplate(this.template.id, message);
@@ -43,6 +43,7 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
     }
 
     private void updateTemplate(String id, String messageTxt) {
+        //TODO : Create constructor for template in updateTemplate
         template = new Template();
         template.messageText = messageTxt;
 

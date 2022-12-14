@@ -9,9 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.R;
-
+        //TODO : change dashboardViewHolder to dashboardItemViewHolder
 public class DashboardViewHolder extends RecyclerView.ViewHolder {
-
+    //TODO ; imageImg to dashboardImg
     ImageView imageImg;
     TextView titleTxt;
 

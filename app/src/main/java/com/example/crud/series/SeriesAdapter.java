@@ -11,13 +11,12 @@ import com.example.crud.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
+    //TODO : Adapter class name change to SeriesItemsAdapter
 public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
-    // rename variable name remove array
+
     private List<Series> seriesList;
     private OnItemActionListener onItemActionListener;
-
-    // variable name change
+    //TODO : method name change to setData and method give default and use this key word
     public void setupData(List<Series> seriesList1) {
         seriesList = seriesList1;
         notifyDataSetChanged();

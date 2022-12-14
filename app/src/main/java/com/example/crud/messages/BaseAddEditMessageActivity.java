@@ -20,6 +20,7 @@ import retrofit2.Response;
 public class BaseAddEditMessageActivity extends BaseActivity {
 
     protected Message message;
+    //TODO ; object names give to textTxt
     protected EditText nameTxt;
     protected EditText phoneNumberTxt;
     protected EditText messageTxt;

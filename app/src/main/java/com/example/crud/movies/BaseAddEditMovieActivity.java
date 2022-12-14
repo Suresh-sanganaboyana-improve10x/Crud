@@ -32,7 +32,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     protected EditText movieNameTextTxt;
     protected EditText imageUrlTextTxt;
     protected EditText descriptionTextTxt;
-    private Movie movie;
+    protected Movie movie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

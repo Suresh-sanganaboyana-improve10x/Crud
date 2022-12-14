@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
-    // rename the object Name to messageList
+
     private ArrayList<Message> messageList = new ArrayList<>();
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
@@ -48,10 +48,12 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void deleteMessage(String id) {
+        //TODO : give here progressBar showVisibility
         Call<Void> call = crudService.deleteMessage(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                //TODO : give here and onFailure hideVisibility
                 showToast("Deleted the message");
                 fetchMessages();
             }

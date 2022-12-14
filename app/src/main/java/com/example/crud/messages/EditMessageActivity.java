@@ -13,6 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditMessageActivity extends BaseAddEditMessageActivity {
+    //TODO : call here Message class to private Message message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
     }
 
     private void updateMessage(String id, String name, String phoneNumber, String messageText) {
+        //TODO : give class name Message create constructor
         message = new Message();
         message.nameText = name;
         message.phoneNumberText = phoneNumber;

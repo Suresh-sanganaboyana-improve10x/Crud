@@ -37,6 +37,7 @@ public class AddMovieActivity extends BaseAddEditMovieActivity {
     }
 
     private void addMovie(String movieId, String seriesId, String imageUrl, String title, String description) {
+        //TODO : use constructor for movie
         Movie movie = new Movie();
         movie.movieId = movieId;
         movie.seriesId = seriesId;

@@ -22,7 +22,6 @@ public class AddSeriesActivity extends BaseAddEditSeriesActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // rename the id to "done"
         if (item.getItemId() == R.id.done) {
             String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();

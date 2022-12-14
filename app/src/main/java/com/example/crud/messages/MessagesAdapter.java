@@ -15,12 +15,12 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     private List<Message> messageList;
     private OnItemActionListener onItemActionListener;
-    // method name change to setData
+    //TODO : give default method and use (this) keyWord
     public void setData(List<Message> messages) {
         messageList = messages;
         notifyDataSetChanged();
     }
-
+    //TODO : give default method for setOnItemActionListener use this key word
     public void setOnItemActionListener(OnItemActionListener itemActionListener) {
         onItemActionListener = itemActionListener;
     }
@@ -34,7 +34,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
-        //change the object name ("message")
         Message message = messageList.get(position);
         holder.nameTxt.setText(message.nameText);
         holder.phoneNumberTxt.setText(message.phoneNumberText);
