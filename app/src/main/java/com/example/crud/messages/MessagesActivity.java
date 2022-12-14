@@ -30,7 +30,6 @@ public class MessagesActivity extends BaseActivity {
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
     private ProgressBar progressBar;
-    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +38,6 @@ public class MessagesActivity extends BaseActivity {
         log("onCreate");
         getSupportActionBar().setTitle("Messages");
         setupMessagesRv();
-        setupApiService();
-    }
-
-    public void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     private void editMessage(Message messages) {

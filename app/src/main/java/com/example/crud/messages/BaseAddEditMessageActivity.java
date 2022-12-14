@@ -23,20 +23,13 @@ public class BaseAddEditMessageActivity extends BaseActivity {
     protected EditText nameTxt;
     protected EditText phoneNumberTxt;
     protected EditText messageTxt;
-    protected CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_message);
-        setupApiService();
         initViews();
         log("onCreate");
-    }
-
-    public void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     @Override

@@ -29,14 +29,12 @@ public class MoviesActivity extends BaseActivity {
     private ArrayList<Movie> movieList = new ArrayList<>();
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
-    private CrudService crudService;
     private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
-        setupApiService();
         log("onCreate");
         getSupportActionBar().setTitle("Movies");
         setupMoviesRv();
@@ -48,11 +46,6 @@ public class MoviesActivity extends BaseActivity {
 
     private void hideVisibility() {
         progressBar.setVisibility(View.GONE);
-    }
-
-    public void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     @Override

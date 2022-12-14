@@ -21,19 +21,12 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
 
     protected EditText messageTxt;
     private Template template;
-    protected CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_template);
-        setupApiService();
         initView();
-    }
-
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     @Override

@@ -31,21 +31,14 @@ public class TemplatesActivity extends BaseActivity {
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
     private ProgressBar progressBar;
-    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
-        setupApiService();
         log("onCreate");
         getSupportActionBar().setTitle("Templates");
         setupRecyclerViewForTemplates();
-    }
-
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
     // rename method
     private void editTemplate(Template templates) {
@@ -55,7 +48,6 @@ public class TemplatesActivity extends BaseActivity {
     }
     // rename method
     private void deleteTemplate(String id) {
-        setupApiService();
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override

@@ -31,7 +31,6 @@ public class SeriesListActivity extends BaseActivity {
     private RecyclerView seriesItemsRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
-    private CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +38,7 @@ public class SeriesListActivity extends BaseActivity {
         setContentView(R.layout.activity_series_list);
         log("onCreate");
         getSupportActionBar().setTitle("Series");
-        setupApiService();
         seriesItemsRv();
-    }
-
-    private void setupApiService() {
-        CrudApi crudApi = new CrudApi();
-        crudService = crudApi.createCrudService();
     }
 
     private void updateSeries(Series series) {
