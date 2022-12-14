@@ -11,8 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.crud.Api.CrudApi;
-import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
@@ -37,7 +35,10 @@ public class MessagesActivity extends BaseActivity {
         setContentView(R.layout.activity_messages);
         log("onCreate");
         getSupportActionBar().setTitle("Messages");
+        findViews();
+        setupMessagesAdapter();
         setupMessagesRv();
+
     }
 
     private void editMessage(Message messages) {
@@ -46,7 +47,7 @@ public class MessagesActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    private void setOnDeleteMessage(String id) {
+    private void deleteMessage(String id) {
         Call<Void> call = crudService.deleteMessage(id);
         call.enqueue(new Callback<Void>() {
             @Override
@@ -105,17 +106,19 @@ public class MessagesActivity extends BaseActivity {
             }
         });
     }
-    // method name change to setupMessagesRv
-    private void setupMessagesRv() {
+
+    private void findViews() {
         progressBar = findViewById(R.id.progress_bar);
         messagesRv = findViewById(R.id.messages_rv);
-        messagesRv.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setupMessagesAdapter() {
         messagesAdapter = new MessagesAdapter();
         messagesAdapter.setData(messageList);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
-                setOnDeleteMessage(id);
+                deleteMessage(id);
                 fetchMessages();
             }
 
@@ -124,6 +127,10 @@ public class MessagesActivity extends BaseActivity {
                 editMessage(message);
             }
         });
+    }
+
+    private void setupMessagesRv() {
+        messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesRv.setAdapter(messagesAdapter);
     }
 

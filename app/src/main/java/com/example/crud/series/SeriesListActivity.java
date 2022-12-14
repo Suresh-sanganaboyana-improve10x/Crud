@@ -27,7 +27,6 @@ import retrofit2.Response;
 public class SeriesListActivity extends BaseActivity {
 
     private ArrayList<Series> seriesList = new ArrayList<>();
-    // rename the seriesListRv// doubt
     private RecyclerView seriesItemsRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
@@ -38,6 +37,8 @@ public class SeriesListActivity extends BaseActivity {
         setContentView(R.layout.activity_series_list);
         log("onCreate");
         getSupportActionBar().setTitle("Series");
+        findViews();
+        setupSeriesAdapter();
         seriesItemsRv();
     }
 
@@ -102,15 +103,17 @@ public class SeriesListActivity extends BaseActivity {
             @Override
             public void onFailure(Call<List<Series>> call, Throwable t) {
                 hideVisibility();
-                //Toast
+                showToast("Failed to load data");
             }
         });
     }
-    // rename method name
-    private void seriesItemsRv() {
+
+    private void findViews() {
         progressBar = findViewById(R.id.progress_bar);
         seriesItemsRv = findViewById(R.id.series_items_rv);
-        seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setupSeriesAdapter() {
         seriesAdapter = new SeriesAdapter();
         seriesAdapter.setupData(seriesList);
         seriesAdapter.setOnItemActionListener(new OnItemActionListener() {
@@ -123,9 +126,13 @@ public class SeriesListActivity extends BaseActivity {
             @Override
             public void onEdit(Series series) {
                 updateSeries(series);
-                //Toast
+                showToast("Failed to load data");
             }
         });
+    }
+    // rename method name
+    private void seriesItemsRv() {
+        seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
         seriesItemsRv.setAdapter(seriesAdapter);
     }
 

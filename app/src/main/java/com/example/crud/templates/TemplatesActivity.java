@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.crud.Api.CrudApi;
-import com.example.crud.Api.CrudService;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
@@ -26,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TemplatesActivity extends BaseActivity {
-    // rename variable remove array word
+
     private ArrayList<Template> templatesList = new ArrayList<>();
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
@@ -38,15 +36,17 @@ public class TemplatesActivity extends BaseActivity {
         setContentView(R.layout.activity_templates);
         log("onCreate");
         getSupportActionBar().setTitle("Templates");
-        setupRecyclerViewForTemplates();
+        findViews();
+        setupTemplatesAdapter();
+        setupTemplatesRv();
     }
-    // rename method
+
     private void editTemplate(Template templates) {
         Intent intent = new Intent(this, EditTemplateActivity.class);
         intent.putExtra(Constants.KEY_TEMPLATE, templates);
         startActivity(intent);
     }
-    // rename method
+
     private void deleteTemplate(String id) {
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
@@ -94,25 +94,25 @@ public class TemplatesActivity extends BaseActivity {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
                 hideVisible();
-              // showToast
-                Toast.makeText(TemplatesActivity.this, "Successfully fetch the data", Toast.LENGTH_SHORT).show();
+                showToast("Successfully fetch the data");
                 List<Template> templatesList = response.body();
                 templatesAdapter.setData(templatesList);
             }
 
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
-                //showToast
-                Toast.makeText(TemplatesActivity.this, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                showToast("Failed to fetch data");
                 hideVisible();
             }
         });
     }
-    // rename method name
-    private void setupRecyclerViewForTemplates() {
+
+    private void findViews() {
         progressBar = findViewById(R.id.progress_bar);
         templatesRv = findViewById(R.id.templates_rv);
-        templatesRv.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setupTemplatesAdapter() {
         templatesAdapter = new TemplatesAdapter();
         templatesAdapter.setData(templatesList);
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
@@ -127,6 +127,10 @@ public class TemplatesActivity extends BaseActivity {
                 editTemplate(templates);
             }
         });
+    }
+
+    private void setupTemplatesRv() {
+        templatesRv.setLayoutManager(new LinearLayoutManager(this));
         templatesRv.setAdapter(templatesAdapter);
     }
 

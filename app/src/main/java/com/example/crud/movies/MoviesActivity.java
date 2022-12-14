@@ -37,6 +37,8 @@ public class MoviesActivity extends BaseActivity {
         setContentView(R.layout.activity_movies);
         log("onCreate");
         getSupportActionBar().setTitle("Movies");
+        findViews();
+        setupMoviesAdapter();
         setupMoviesRv();
     }
 
@@ -93,10 +95,12 @@ public class MoviesActivity extends BaseActivity {
         });
     }
 
-    private void setupMoviesRv() {
+    private void findViews() {
         progressBar = findViewById(R.id.progress_bar);
         moviesRv = findViewById(R.id.movies_rv);
-        moviesRv.setLayoutManager(new GridLayoutManager(this, 2));
+    }
+
+    private void setupMoviesAdapter() {
         moviesAdapter = new MoviesAdapter();
         moviesAdapter.setData(movieList);
         moviesAdapter.setOnItemActionListener(new OnItemActionListener() {
@@ -112,6 +116,10 @@ public class MoviesActivity extends BaseActivity {
                 showToast("Failed to load data");
             }
         });
+    }
+
+    private void setupMoviesRv() {
+        moviesRv.setLayoutManager(new GridLayoutManager(this, 2));
         moviesRv.setAdapter(moviesAdapter);
     }
 
