@@ -28,7 +28,7 @@ public class SeriesListActivity extends BaseActivity {
 
     private ArrayList<Series> seriesList = new ArrayList<>();
     // rename the seriesListRv// doubt
-    private RecyclerView seriesRv;
+    private RecyclerView seriesItemsRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
     private CrudService crudService;
@@ -40,7 +40,7 @@ public class SeriesListActivity extends BaseActivity {
         log("onCreate");
         getSupportActionBar().setTitle("Series");
         setupApiService();
-        setSeriesRv();
+        seriesItemsRv();
     }
 
     private void setupApiService() {
@@ -114,10 +114,10 @@ public class SeriesListActivity extends BaseActivity {
         });
     }
     // rename method name
-    private void setSeriesRv() {
+    private void seriesItemsRv() {
         progressBar = findViewById(R.id.progress_bar);
-        seriesRv = findViewById(R.id.series_rv);
-        seriesRv.setLayoutManager(new LinearLayoutManager(this));
+        seriesItemsRv = findViewById(R.id.series_items_rv);
+        seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
         seriesAdapter = new SeriesAdapter();
         seriesAdapter.setupData(seriesList);
         seriesAdapter.setOnItemActionListener(new OnItemActionListener() {
@@ -133,7 +133,7 @@ public class SeriesListActivity extends BaseActivity {
                 //Toast
             }
         });
-        seriesRv.setAdapter(seriesAdapter);
+        seriesItemsRv.setAdapter(seriesAdapter);
     }
 
     private void showVisibility() {

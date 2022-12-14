@@ -39,7 +39,7 @@ public class MoviesActivity extends BaseActivity {
         setupApiService();
         log("onCreate");
         getSupportActionBar().setTitle("Movies");
-        setRecyclerView();
+        setupMoviesRv();
     }
 
     private void showVisibility() {
@@ -64,7 +64,7 @@ public class MoviesActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // id name change ("add)
-        if (item.getItemId() == R.id.movie_add_item) {
+        if (item.getItemId() == R.id.add) {
             Intent intent = new Intent(this, AddMovieActivity.class);
             startActivity(intent);
             return true;
@@ -99,8 +99,8 @@ public class MoviesActivity extends BaseActivity {
             }
         });
     }
-    //change method name ("setupMoviesRv")
-    private void setRecyclerView() {
+
+    private void setupMoviesRv() {
         progressBar = findViewById(R.id.progress_bar);
         moviesRv = findViewById(R.id.movies_rv);
         moviesRv.setLayoutManager(new GridLayoutManager(this, 2));
@@ -115,7 +115,7 @@ public class MoviesActivity extends BaseActivity {
 
             @Override
             public void onEdit(Movie movie) {
-                setEditMovie(movie);
+                editMovie(movie);
                 showToast("Failed to load data");
             }
         });
@@ -137,8 +137,8 @@ public class MoviesActivity extends BaseActivity {
             }
         });
     }
-    // method name change "editMovie"
-    private void setEditMovie(Movie movie) {
+
+    private void editMovie(Movie movie) {
         Intent intent = new Intent(this, EditMovieActivity.class);
         intent.putExtra(Constants.KEY_MOVIE, movie);
         startActivity(intent);

@@ -26,7 +26,7 @@ import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
     // rename the object Name to messageList
-    private ArrayList<Message> messagesArrayList = new ArrayList<>();
+    private ArrayList<Message> messageList = new ArrayList<>();
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
     private ProgressBar progressBar;
@@ -38,7 +38,7 @@ public class MessagesActivity extends BaseActivity {
         setContentView(R.layout.activity_messages);
         log("onCreate");
         getSupportActionBar().setTitle("Messages");
-        setupRecyclerViewForMessages();
+        setupMessagesRv();
         setupApiService();
     }
 
@@ -59,7 +59,7 @@ public class MessagesActivity extends BaseActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showToast("Deleted the message");
-                fetchData();
+                fetchMessages();
             }
 
             @Override
@@ -73,7 +73,7 @@ public class MessagesActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         log("onResume");
-        fetchData();
+        fetchMessages();
     }
 
     @Override
@@ -93,7 +93,7 @@ public class MessagesActivity extends BaseActivity {
         }
     }
 
-    private void fetchData() {
+    private void fetchMessages() {
         showVisible();
         Call<List<Message>> call = crudService.fetchMessages();
         call.enqueue(new Callback<List<Message>>() {
@@ -101,7 +101,7 @@ public class MessagesActivity extends BaseActivity {
             public void onResponse(Call<List<Message>> call, Response<List<Message>> response) {
                 hideVisible();
                 List<Message> messagesList = response.body();
-                messagesAdapter.setupData(messagesList);
+                messagesAdapter.setData(messagesList);
                 showToast("Successfully fetch the data");
             }
 
@@ -113,17 +113,17 @@ public class MessagesActivity extends BaseActivity {
         });
     }
     // method name change to setupMessagesRv
-    private void setupRecyclerViewForMessages() {
+    private void setupMessagesRv() {
         progressBar = findViewById(R.id.progress_bar);
         messagesRv = findViewById(R.id.messages_rv);
         messagesRv.setLayoutManager(new LinearLayoutManager(this));
         messagesAdapter = new MessagesAdapter();
-        messagesAdapter.setupData(messagesArrayList);
+        messagesAdapter.setData(messageList);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
                 setOnDeleteMessage(id);
-                fetchData();
+                fetchMessages();
             }
 
             @Override

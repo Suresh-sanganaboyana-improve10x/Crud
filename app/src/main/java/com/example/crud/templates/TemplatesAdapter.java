@@ -33,14 +33,14 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TemplateViewHolder holder, int position) {
-        // rename object templates to template
-        Template templates = templateList.get(position);
-        holder.messageTextTxt.setText(templates.messageText);
+        // rename object template to template
+        Template template = templateList.get(position);
+        holder.messageTextTxt.setText(template.messageText);
         holder.deleteImgBtn.setOnClickListener(view -> {
-            onItemActionListener.onDelete(templates.id);
+            onItemActionListener.onDelete(template.id);
         });
         holder.itemView.setOnClickListener(view -> {
-            onItemActionListener.onEdit(templates);
+            onItemActionListener.onEdit(template);
         });
     }
 

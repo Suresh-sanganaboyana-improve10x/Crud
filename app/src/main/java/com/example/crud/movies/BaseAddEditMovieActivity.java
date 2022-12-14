@@ -32,20 +32,20 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     protected EditText movieNameTextTxt;
     protected EditText imageUrlTextTxt;
     protected EditText descriptionTextTxt;
-    protected Movie movie;
+    private Movie movie;
     protected CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_movie);
+        setupApiService();
+        fetchSeries();
         initViews();
         setupSeriesSp();
-        fetchSeries();
-        setupApiService();
     }
 
-    private void setupApiService() {
+    protected void setupApiService() {
         CrudApi crudApi = new CrudApi();
         crudService = crudApi.createCrudService();
     }

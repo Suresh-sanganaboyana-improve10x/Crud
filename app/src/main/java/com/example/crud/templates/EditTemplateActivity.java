@@ -14,6 +14,8 @@ import retrofit2.Response;
 
 public class EditTemplateActivity extends BaseAddEditTemplateActivity {
 
+    private Template template;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // rename id name "done"
-        if (item.getItemId() == R.id.edit) {
+        if (item.getItemId() == R.id.done) {
             String message = messageTxt.getText().toString();
             updateTemplate(this.template.id, message);
             return true;
@@ -54,7 +56,7 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                //Toast
+                showToast("Failed to update template");
             }
         });
     }

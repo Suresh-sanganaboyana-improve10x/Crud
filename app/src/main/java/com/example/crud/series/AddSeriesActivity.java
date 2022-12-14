@@ -23,7 +23,7 @@ public class AddSeriesActivity extends BaseAddEditSeriesActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // rename the id to "done"
-        if (item.getItemId() == R.id.add_edit) {
+        if (item.getItemId() == R.id.done) {
             String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
             String imageUrl = seriesUrlTxt.getText().toString();
@@ -35,7 +35,7 @@ public class AddSeriesActivity extends BaseAddEditSeriesActivity {
     }
 
     private void addSeries(String seriesId, String title, String imageUrl) {
-        series = new Series();
+        Series series = new Series();
         series.seriesId = seriesId;
         series.title = title;
         series.imageUrl = imageUrl;

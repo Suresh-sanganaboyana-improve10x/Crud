@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class BaseAddEditSeriesActivity extends BaseActivity {
 
-    protected Series series;
+    private Series series;
     protected EditText seriesIdTxt;
     protected EditText seriesNameTxt;
     protected EditText seriesUrlTxt;

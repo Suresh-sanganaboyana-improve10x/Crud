@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class TemplatesActivity extends BaseActivity {
     // rename variable remove array word
-    private ArrayList<Template> templatesArrayList = new ArrayList<>();
+    private ArrayList<Template> templatesList = new ArrayList<>();
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
     private ProgressBar progressBar;
@@ -46,16 +46,15 @@ public class TemplatesActivity extends BaseActivity {
     private void setupApiService() {
         CrudApi crudApi = new CrudApi();
         crudService = crudApi.createCrudService();
-
     }
     // rename method
-    private void setEditTemplate(Template templates) {
+    private void editTemplate(Template templates) {
         Intent intent = new Intent(this, EditTemplateActivity.class);
         intent.putExtra(Constants.KEY_TEMPLATE, templates);
         startActivity(intent);
     }
     // rename method
-    private void setDeleteTemplate(String id) {
+    private void deleteTemplate(String id) {
         setupApiService();
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
@@ -67,7 +66,7 @@ public class TemplatesActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                //Toast
+                showToast("Failed to delete template");
             }
         });
     }
@@ -123,17 +122,17 @@ public class TemplatesActivity extends BaseActivity {
         templatesRv = findViewById(R.id.templates_rv);
         templatesRv.setLayoutManager(new LinearLayoutManager(this));
         templatesAdapter = new TemplatesAdapter();
-        templatesAdapter.setData(templatesArrayList);
+        templatesAdapter.setData(templatesList);
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
-                setDeleteTemplate(id);
+                deleteTemplate(id);
                 fetchData();
             }
 
             @Override
             public void onEdit(Template templates) {
-                setEditTemplate(templates);
+                editTemplate(templates);
             }
         });
         templatesRv.setAdapter(templatesAdapter);

@@ -10,16 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.crud.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
-    // rename object movieList
-    private List<Movie> movieArrayList;
+
+    private List<Movie> movieList;
     private OnItemActionListener onItemActionListener;
 
     public void setData(List<Movie> movies) {
-        movieArrayList = movies;
+        movieList = movies;
         notifyDataSetChanged();
     }
 
@@ -37,7 +36,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-        Movie movie = movieArrayList.get(position);
+        Movie movie = movieList.get(position);
         Picasso.get().load(movie.imageUrl).into(holder.movieImageUrl);
         holder.titleTextTxt.setText(movie.name);
         holder.deleteImgBtn.setOnClickListener(view -> {
@@ -50,6 +49,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public int getItemCount() {
-        return movieArrayList.size();
+        return movieList.size();
     }
 }

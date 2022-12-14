@@ -15,6 +15,8 @@ import retrofit2.Response;
 
 public class EditSeriesActivity extends BaseAddEditSeriesActivity {
 
+    private Series series;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // rename id name "done"
-        if (item.getItemId() == R.id.add_edit) {
+        if (item.getItemId() == R.id.done) {
             String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
             String imageUrl = seriesUrlTxt.getText().toString();

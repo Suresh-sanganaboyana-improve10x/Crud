@@ -21,8 +21,7 @@ public class AddMessageActivity extends BaseAddEditMessageActivity{
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        //rename id (edit to done)
-        if (item.getItemId() == R.id.edit) {
+        if (item.getItemId() == R.id.done) {
             String name = nameTxt.getText().toString();
             String phoneNumber = phoneNumberTxt.getText().toString();
             String message = messageTxt.getText().toString();
@@ -34,7 +33,7 @@ public class AddMessageActivity extends BaseAddEditMessageActivity{
     }
 
     private void addMessage(String name, String phoneNumber, String messageTxt) {
-        message = new Message();
+        Message message = new Message();
         message.nameText = name;
         message.phoneNumberText = phoneNumber;
         message.messageText = messageTxt;

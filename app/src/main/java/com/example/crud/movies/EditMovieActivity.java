@@ -15,6 +15,8 @@ import retrofit2.Response;
 
 public class EditMovieActivity extends BaseAddEditMovieActivity {
 
+    private Movie movie;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.movie_add_edit_btn) {
+        if (item.getItemId() == R.id.done) {
             String movieId = movieIdTextTxt.getText().toString();
             Series series = (Series) seriesSp.getSelectedItem();
             String seriesId = series.seriesId;
@@ -42,7 +44,7 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
     }
 
     private void updateMovie(String id, String movieId, String seriesId, String imageUrl, String title, String description) {
-        movie = new Movie();
+        Movie movie = new Movie();
         movie.movieId = movieId;
         movie.seriesId = seriesId;
         movie.imageUrl = imageUrl;
@@ -62,5 +64,18 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
                 showToast("Failed to update");
             }
         });
+    }
+
+    protected void showData() {
+        movieIdTextTxt.setText(movie.movieId);
+        movieNameTextTxt.setText(movie.name);
+        imageUrlTextTxt.setText(movie.imageUrl);
+        descriptionTextTxt.setText(movie.description);
+        for (int i = 0; i<customSeriesAdapter.getCount(); i++) {
+            Series series = customSeriesAdapter.getItem(i);
+            if (movie.id.equals(series.id)) {
+                seriesSp.setSelection(i);
+            }
+        }
     }
 }

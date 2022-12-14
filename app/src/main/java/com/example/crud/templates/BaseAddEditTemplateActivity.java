@@ -19,9 +19,9 @@ import retrofit2.Response;
 
 public class BaseAddEditTemplateActivity extends BaseActivity {
 
-    EditText messageTxt;
-    Template template;
-    CrudService crudService;
+    protected EditText messageTxt;
+    private Template template;
+    protected CrudService crudService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -16,7 +16,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     private List<Message> messageList;
     private OnItemActionListener onItemActionListener;
     // method name change to setData
-    public void setupData(List<Message> messages) {
+    public void setData(List<Message> messages) {
         messageList = messages;
         notifyDataSetChanged();
     }
@@ -35,15 +35,15 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
         //change the object name ("message")
-        Message messages = messageList.get(position);
-        holder.nameTxt.setText(messages.nameText);
-        holder.phoneNumberTxt.setText(messages.phoneNumberText);
-        holder.messageTxt.setText(messages.messageText);
+        Message message = messageList.get(position);
+        holder.nameTxt.setText(message.nameText);
+        holder.phoneNumberTxt.setText(message.phoneNumberText);
+        holder.messageTxt.setText(message.messageText);
         holder.deleteImgBtn.setOnClickListener(view -> {
-            onItemActionListener.onDelete(messages.id);
+            onItemActionListener.onDelete(message.id);
         });
         holder.itemView.setOnClickListener(view -> {
-            onItemActionListener.onEdit(messages);
+            onItemActionListener.onEdit(message);
         });
     }
 
