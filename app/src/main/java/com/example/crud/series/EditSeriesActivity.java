@@ -12,7 +12,7 @@ import com.example.crud.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+    //TODO :change editSeriesActivity to editSeriesItemActivity
 public class EditSeriesActivity extends BaseAddEditSeriesActivity {
 
     private Series series;
@@ -45,7 +45,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
         seriesNameTxt.setText(series.title);
         seriesUrlTxt.setText(series.imageUrl);
     }
-
+    //TODO : where series method i gave there i need to change the method names to adding the (Item)
     private void updateSeries(String id, String seriesId, String title, String imageUrl) {
         //TODO : create Constructor for Series
         series = new Series();

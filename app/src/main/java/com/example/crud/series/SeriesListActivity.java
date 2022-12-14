@@ -23,7 +23,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+    //TODO : change seriesListActivity to seriesItemsActivity
 public class SeriesListActivity extends BaseActivity {
     //TODO : series object name change to seriesItems
     private ArrayList<Series> seriesList = new ArrayList<>();
@@ -130,7 +130,7 @@ public class SeriesListActivity extends BaseActivity {
             }
         });
     }
-    // rename method name
+
     private void seriesItemsRv() {
         seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
         seriesItemsRv.setAdapter(seriesAdapter);
