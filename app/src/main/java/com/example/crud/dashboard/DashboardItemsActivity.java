@@ -5,8 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
 
 import com.example.crud.R;
 
@@ -16,7 +14,7 @@ public class DashboardItemsActivity extends AppCompatActivity {
 
     private ArrayList<DashboardItem> dashboardItems;
     private RecyclerView dashboardItemsRv;
-    private DashboardAdapter dashboardItemsAdapter;
+    private DashboardItemsAdapter dashboardItemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +32,7 @@ public class DashboardItemsActivity extends AppCompatActivity {
 
     private void setupDashboardItemsRv() {
         dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
-        dashboardItemsAdapter = new DashboardAdapter();
+        dashboardItemsAdapter = new DashboardItemsAdapter();
         dashboardItemsAdapter.setupData(dashboardItems);
         dashboardItemsRv.setAdapter(dashboardItemsAdapter);
     }

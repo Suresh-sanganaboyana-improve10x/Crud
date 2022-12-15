@@ -15,8 +15,8 @@ import com.example.crud.messages.MessagesActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-    //TODO : change the DashboardAdapter to DashboardItemsAdapter
-public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
+
+public class DashboardItemsAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
     //TODO : change name dashboardList to dashboardItems;
     private ArrayList<DashboardItem> dashboardList;
     //TODO : method name change to setData
