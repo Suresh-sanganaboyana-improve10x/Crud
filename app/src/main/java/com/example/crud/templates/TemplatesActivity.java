@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
@@ -90,7 +89,7 @@ public class TemplatesActivity extends BaseActivity {
 
     private void fetchData() {
         showVisible();
-        Call<List<Template>> call = crudService.fetchTemplate();
+        Call<List<Template>> call = crudService.fetchTemplates();
         call.enqueue(new Callback<List<Template>>() {
             @Override
             public void onResponse(Call<List<Template>> call, Response<List<Template>> response) {
