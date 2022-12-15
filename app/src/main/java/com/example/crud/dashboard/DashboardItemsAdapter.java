@@ -41,15 +41,12 @@ public class DashboardItemsAdapter extends RecyclerView.Adapter<DashboardViewHol
             if (holder.titleTxt.getText().toString().equalsIgnoreCase("Message")) {
                 Intent intent = new Intent(holder.itemView.getContext(), MessagesActivity.class);
                 holder.itemView.getContext().startActivity(intent);
-            //TODO : remove extra lines in this onBindViewHolder
             } else if (holder.titleTxt.getText().toString().equalsIgnoreCase("Templates")) {
                 Intent intent = new Intent(holder.itemView.getContext(), TemplatesActivity.class);
                 holder.itemView.getContext().startActivity(intent);
-
             } else if (holder.titleTxt.getText().toString().equalsIgnoreCase("Series")) {
                 Intent intent = new Intent(holder.itemView.getContext(), SeriesListActivity.class);
                 holder.itemView.getContext().startActivity(intent);
-
             } else if (holder.titleTxt.getText().toString().equalsIgnoreCase("Movies")) {
                 Intent intent = new Intent(holder.itemView.getContext(), MoviesActivity.class);
                 holder.itemView.getContext().startActivity(intent);
