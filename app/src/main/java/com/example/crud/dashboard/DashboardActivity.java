@@ -41,22 +41,22 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardItems = new ArrayList<>();
         DashboardItem message = new DashboardItem();
         message.imageUrl = "https://www.techadvisor.com/wp-content/uploads/2022/06/how-to-read-facebook-messages-without-them-knowing-main.jpg?quality=50&strip=all&w=1024";
-        message.titleText = "Message";
+        message.title = "Message";
         dashboardItems.add(message);
 
         DashboardItem templates = new DashboardItem();
         templates.imageUrl = "https://mixkit.imgix.net/static/home/free-video-templates/free-final-cut-pro-templates.png?q=80&auto=format%2Ccompress";
-        templates.titleText = "Templates";
+        templates.title = "Templates";
         dashboardItems.add(templates);
 
         DashboardItem series = new DashboardItem();
         series.imageUrl = "https://www.sleepspa.in/wp-content/uploads/2020/04/money-heist-netflix.jpeg";
-        series.titleText = "Series";
+        series.title = "Series";
         dashboardItems.add(series);
 
         DashboardItem movies = new DashboardItem();
         movies.imageUrl = "https://collegerealitycheck.com/wp-content/uploads/film-studies-degree-374366191-1024x768.jpg";
-        movies.titleText = "Movies";
+        movies.title = "Movies";
         dashboardItems.add(movies);
     }
 }
