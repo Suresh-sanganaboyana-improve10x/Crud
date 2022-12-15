@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.crud.R;
 
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
     //TODO : create progressBar method
+    private ProgressBar progressBar;
     private ArrayList<DashboardItem> dashboardItems;
     //TODO : variable name change to dashboardItemsRv;
     private RecyclerView dashboardRv;
@@ -37,6 +40,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     private void setupData() {
+        hideProgressBar();
         //TODO : create constructor for this
         dashboardItems = new ArrayList<>();
         DashboardItem message = new DashboardItem();
@@ -58,5 +62,9 @@ public class DashboardActivity extends AppCompatActivity {
         movies.imageUrl = "https://collegerealitycheck.com/wp-content/uploads/film-studies-degree-374366191-1024x768.jpg";
         movies.title = "Movies";
         dashboardItems.add(movies);
+    }
+
+    private void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
     }
 }
