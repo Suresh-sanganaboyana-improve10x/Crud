@@ -18,10 +18,10 @@ import java.util.ArrayList;
     //TODO : change the DashboardAdapter to DashboardItemsAdapter
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
     //TODO : change name dashboardList to dashboardItems;
-    private ArrayList<Dashboard> dashboardList;
+    private ArrayList<DashboardItem> dashboardList;
     //TODO : method name change to setData
-    public void setupData(ArrayList<Dashboard> dashboards) {
-        dashboardList = dashboards;
+    public void setupData(ArrayList<DashboardItem> dashboardItems) {
+        dashboardList = dashboardItems;
     }
 
     @NonNull
@@ -34,9 +34,9 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull DashboardViewHolder holder, int position) {
-        Dashboard dashboard = dashboardList.get(position);
-        Picasso.get().load(dashboard.imageUrl).into(holder.imageImg);
-        holder.titleTxt.setText(dashboard.titleText);
+        DashboardItem dashboardItem = dashboardList.get(position);
+        Picasso.get().load(dashboardItem.imageUrl).into(holder.imageImg);
+        holder.titleTxt.setText(dashboardItem.titleText);
         holder.itemView.setOnClickListener(view -> {
             if (holder.titleTxt.getText().toString().equalsIgnoreCase("Message")) {
                 Intent intent = new Intent(holder.itemView.getContext(), MessagesActivity.class);
