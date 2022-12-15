@@ -25,10 +25,10 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         getSupportActionBar().setTitle("Dashboard");
         setupData();
-        setupDashboardRv();
+        setupDashboardItemsRv();
     }
-    //TODO : change method name setupDashboardItemsRv
-    private void setupDashboardRv() {
+
+    private void setupDashboardItemsRv() {
         //TODO : create method for findViews to store there findViews
         dashboardItemsRv = findViewById(R.id.dashboard_rv);
         dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
