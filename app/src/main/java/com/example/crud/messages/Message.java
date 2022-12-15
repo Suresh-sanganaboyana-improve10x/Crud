@@ -14,4 +14,14 @@ public class Message implements Serializable {
     //TODO : String phoneNumberText to phoneNumber
     public String phoneNumberText;
     public String messageText;
+
+    public Message() {
+
+    }
+
+    public Message(String nameText, String phoneNumberText, String messageText) {
+        this.nameText = nameText;
+        this.phoneNumberText = phoneNumberText;
+        this.messageText = messageText;
+    }
 }
