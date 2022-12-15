@@ -17,8 +17,7 @@ public class DashboardActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private ArrayList<DashboardItem> dashboardItems;
     private RecyclerView dashboardItemsRv;
-    //TODO : object name change dashboardItemsAdapter;
-    private DashboardAdapter dashboardAdapter;
+    private DashboardAdapter dashboardItemsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +32,9 @@ public class DashboardActivity extends AppCompatActivity {
         //TODO : create method for findViews to store there findViews
         dashboardItemsRv = findViewById(R.id.dashboard_rv);
         dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
-        dashboardAdapter = new DashboardAdapter();
-        dashboardAdapter.setupData(dashboardItems);
-        dashboardItemsRv.setAdapter(dashboardAdapter);
+        dashboardItemsAdapter = new DashboardAdapter();
+        dashboardItemsAdapter.setupData(dashboardItems);
+        dashboardItemsRv.setAdapter(dashboardItemsAdapter);
     }
 
     private void setupData() {
