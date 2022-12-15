@@ -55,11 +55,10 @@ public interface CrudService {
     Call<Void> editSeriesItem(@Path("id") String id, @Body Series series);
 
     @GET(Constants.TEMPLATES_END_POINT)
-    Call<List<Template>> fetchTemplate();
+    Call<List<Template>> fetchTemplates();
 
     @POST(Constants.TEMPLATES_END_POINT)
-    //TODO : addTemplate rename to createTemplate
-    Call<Template> addTemplate(@Body Template templates);
+    Call<Template> createTemplate(@Body Template templates);
 
     @DELETE(Constants.TEMPLATES_END_POINT + "/{id}")
     Call<Void> deleteTemplate(@Path("id") String id);
