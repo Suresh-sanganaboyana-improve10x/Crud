@@ -19,8 +19,8 @@ import java.util.ArrayList;
 public class DashboardItemsAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
 
     private ArrayList<DashboardItem> dashboardItems;
-    //TODO : method name change to setData
-    public void setupData(ArrayList<DashboardItem> dashboardItems) {
+
+    public void setData(ArrayList<DashboardItem> dashboardItems) {
         this.dashboardItems = dashboardItems;
     }
 

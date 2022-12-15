@@ -33,7 +33,7 @@ public class DashboardItemsActivity extends AppCompatActivity {
     private void setupDashboardItemsRv() {
         dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardItemsAdapter = new DashboardItemsAdapter();
-        dashboardItemsAdapter.setupData(dashboardItems);
+        dashboardItemsAdapter.setData(dashboardItems);
         dashboardItemsRv.setAdapter(dashboardItemsAdapter);
     }
 
