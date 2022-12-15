@@ -2,7 +2,6 @@ package com.example.crud.series;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -53,7 +52,7 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
         series.title = title;
         series.imageUrl = imageUrl;
 
-        Call<Void> call = crudService.editSeries(id, series);
+        Call<Void> call = crudService.editSeriesItem(id, series);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

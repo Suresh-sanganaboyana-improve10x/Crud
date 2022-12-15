@@ -43,17 +43,16 @@ public interface CrudService {
     Call<Void> editMovie(@Path("id") String id, @Body Movie movie);
 
     @GET(Constants.SERIES_END_POINT)
-    Call<List<Series>> fetchSeries();
+    Call<List<Series>> fetchSeriesItems();
 
     @POST(Constants.SERIES_END_POINT)
-    //TODO : addSeries rename to createSeries
-    Call<Series> addSeries(@Body Series series);
+    Call<Series> createSeriesItem(@Body Series series);
 
     @DELETE(Constants.SERIES_END_POINT + "/{id}")
-    Call<Void> deleteSeries(@Path("id") String id);
+    Call<Void> deleteSeriesItem(@Path("id") String id);
 
     @PUT(Constants.SERIES_END_POINT + "/{id}")
-    Call<Void> editSeries(@Path("id") String id, @Body Series series);
+    Call<Void> editSeriesItem(@Path("id") String id, @Body Series series);
 
     @GET(Constants.TEMPLATES_END_POINT)
     Call<List<Template>> fetchTemplate();
