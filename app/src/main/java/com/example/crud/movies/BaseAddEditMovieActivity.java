@@ -1,17 +1,10 @@
 package com.example.crud.movies;
 
-import androidx.annotation.NonNull;
-
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.example.crud.Api.CrudApi;
-import com.example.crud.Api.CrudService;
-import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
 import com.example.crud.series.Series;
@@ -50,7 +43,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     private void fetchSeries() {
-        Call<List<Series>> call = crudService.fetchSeries();
+        Call<List<Series>> call = crudService.fetchSeriesItems();
         call.enqueue(new Callback<List<Series>>() {
             @Override
             public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
