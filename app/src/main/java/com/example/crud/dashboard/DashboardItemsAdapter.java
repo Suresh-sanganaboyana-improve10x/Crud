@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class DashboardItemsAdapter extends RecyclerView.Adapter<DashboardViewHolder> {
+public class DashboardItemsAdapter extends RecyclerView.Adapter<DashboardItemViewHolder> {
 
     private ArrayList<DashboardItem> dashboardItems;
 
@@ -26,14 +26,14 @@ public class DashboardItemsAdapter extends RecyclerView.Adapter<DashboardViewHol
 
     @NonNull
     @Override
-    public DashboardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DashboardItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dashboard_item, parent, false);
-        DashboardViewHolder dashboardViewHolder = new DashboardViewHolder(view);
-        return dashboardViewHolder;
+        DashboardItemViewHolder dashboardItemViewHolder = new DashboardItemViewHolder(view);
+        return dashboardItemViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DashboardViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DashboardItemViewHolder holder, int position) {
         DashboardItem dashboardItem = dashboardItems.get(position);
         Picasso.get().load(dashboardItem.imageUrl).into(holder.imageImg);
         holder.titleTxt.setText(dashboardItem.title);
