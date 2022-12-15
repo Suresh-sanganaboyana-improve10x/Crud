@@ -33,7 +33,6 @@ public class AddMessageActivity extends BaseAddEditMessageActivity{
     }
 
     private void addMessage(String name, String phoneNumber, String messageTxt) {
-        //TODO : create constructor for message
         Message message = new Message(name, phoneNumber,messageTxt);
 
         Call<Message> call = crudService.createMessage(message);
