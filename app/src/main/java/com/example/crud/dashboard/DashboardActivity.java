@@ -13,11 +13,10 @@ import com.example.crud.R;
 import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
-    //TODO : create progressBar method
+
     private ProgressBar progressBar;
     private ArrayList<DashboardItem> dashboardItems;
-    //TODO : variable name change to dashboardItemsRv;
-    private RecyclerView dashboardRv;
+    private RecyclerView dashboardItemsRv;
     //TODO : object name change dashboardItemsAdapter;
     private DashboardAdapter dashboardAdapter;
 
@@ -32,11 +31,11 @@ public class DashboardActivity extends AppCompatActivity {
     //TODO : change method name setupDashboardItemsRv
     private void setupDashboardRv() {
         //TODO : create method for findViews to store there findViews
-        dashboardRv = findViewById(R.id.dashboard_rv);
-        dashboardRv.setLayoutManager(new LinearLayoutManager(this));
+        dashboardItemsRv = findViewById(R.id.dashboard_rv);
+        dashboardItemsRv.setLayoutManager(new LinearLayoutManager(this));
         dashboardAdapter = new DashboardAdapter();
         dashboardAdapter.setupData(dashboardItems);
-        dashboardRv.setAdapter(dashboardAdapter);
+        dashboardItemsRv.setAdapter(dashboardAdapter);
     }
 
     private void setupData() {
