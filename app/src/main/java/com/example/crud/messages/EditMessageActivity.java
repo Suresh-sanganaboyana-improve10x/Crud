@@ -46,11 +46,7 @@ public class EditMessageActivity extends BaseAddEditMessageActivity {
     }
 
     private void updateMessage(String id, String name, String phoneNumber, String messageText) {
-        //TODO : give class name Message create constructor
-        message = new Message();
-        message.nameText = name;
-        message.phoneNumberText = phoneNumber;
-        message.messageText = messageText;
+        Message message = new Message(name, phoneNumber,messageText );
 
         Call<Void> call = crudService.editMessage(id, message);
         call.enqueue(new Callback<Void>() {
