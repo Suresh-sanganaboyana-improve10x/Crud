@@ -13,7 +13,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditMessageActivity extends BaseAddEditMessageActivity {
-    //TODO : call here Message class to private Message message;
+
+    private Message message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
