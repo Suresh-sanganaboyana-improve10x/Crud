@@ -23,27 +23,21 @@ public class AddMovieActivity extends BaseAddEditMovieActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String movieId = movieIdTextTxt.getText().toString();
             Series series = (Series) seriesSp.getSelectedItem();
             String seriesId = series.seriesId;
+            String movieId = movieIdTextTxt.getText().toString();
+            String title = movieNameTextTxt.getText().toString();
             String imageUrl = imageUrlTextTxt.getText().toString();
-            String movieName = movieNameTextTxt.getText().toString();
             String description = descriptionTextTxt.getText().toString();
-            addMovie(movieId, seriesId, imageUrl, movieName, description);
+            addMovie(seriesId, movieId, title, imageUrl, description);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
         }
     }
 
-    private void addMovie(String movieId, String seriesId, String imageUrl, String title, String description) {
-        //TODO : use constructor for movie
-        Movie movie = new Movie();
-        movie.movieId = movieId;
-        movie.seriesId = seriesId;
-        movie.imageUrl = imageUrl;
-        movie.name = title;
-        movie.description = description;
+    private void addMovie(String seriesId, String movieId, String title, String imageUrl, String description) {
+        Movie movie = new Movie(seriesId, movieId, title, imageUrl, description);
 
         Call<Movie> call = crudService.createMovie(movie);
         call.enqueue(new Callback<Movie>() {

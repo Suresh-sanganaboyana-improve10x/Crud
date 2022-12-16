@@ -11,10 +11,21 @@ import retrofit2.Response;
 public class Movie implements Serializable {
     @SerializedName("_id")
     public String id;
-    public String description;
-    public String imageUrl;
+    public String seriesId;
     public String movieId;
     public String name;
-    public String seriesId;
+    public String imageUrl;
+    public String description;
+
+    public Movie() {
+    }
+
+    public Movie(String seriesId, String movieId, String title, String imageUrl, String description) {
+        this.seriesId = seriesId;
+        this.movieId = movieId;
+        this.name = title;
+        this.imageUrl = imageUrl;
+        this.description = description;
+    }
 }
 
