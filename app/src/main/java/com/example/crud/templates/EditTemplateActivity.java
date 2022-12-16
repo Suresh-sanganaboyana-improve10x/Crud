@@ -42,9 +42,7 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
     }
 
     private void updateTemplate(String id, String messageTxt) {
-        //TODO : Create constructor for template in updateTemplate
-        template = new Template();
-        template.messageText = messageTxt;
+        Template template = new Template(messageTxt);
 
         Call<Void> call = crudService.editTemplate(id, template);
         call.enqueue(new Callback<Void>() {
