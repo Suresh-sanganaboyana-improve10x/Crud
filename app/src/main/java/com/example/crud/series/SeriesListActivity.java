@@ -26,7 +26,7 @@ public class SeriesListActivity extends BaseActivity {
     //TODO : series object name change to seriesItems
     private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
     private RecyclerView seriesItemsRv;
-    private SeriesAdapter seriesAdapter;
+    private SeriesItemsAdapter seriesItemsAdapter;
     private ProgressBar progressBar;
 
     @Override
@@ -94,7 +94,7 @@ public class SeriesListActivity extends BaseActivity {
             public void onResponse(Call<List<SeriesItem>> call, Response<List<SeriesItem>> response) {
                 hideVisibility();
                 List<SeriesItem> seriesItems = response.body();
-                seriesAdapter.setupData(seriesItems);
+                seriesItemsAdapter.setupData(seriesItems);
                 showToast("Successfully fetch the data");
             }
 
@@ -112,9 +112,9 @@ public class SeriesListActivity extends BaseActivity {
     }
 
     private void setupSeriesAdapter() {
-        seriesAdapter = new SeriesAdapter();
-        seriesAdapter.setupData(seriesItems);
-        seriesAdapter.setOnItemActionListener(new OnItemActionListener() {
+        seriesItemsAdapter = new SeriesItemsAdapter();
+        seriesItemsAdapter.setupData(seriesItems);
+        seriesItemsAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
                 deleteSeries(id);
@@ -131,7 +131,7 @@ public class SeriesListActivity extends BaseActivity {
 
     private void seriesItemsRv() {
         seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
-        seriesItemsRv.setAdapter(seriesAdapter);
+        seriesItemsRv.setAdapter(seriesItemsAdapter);
     }
 
     private void showVisibility() {
