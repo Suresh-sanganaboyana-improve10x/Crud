@@ -29,9 +29,9 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String seriesId = seriesIdTxt.getText().toString();
-            String title = seriesNameTxt.getText().toString();
-            String imageUrl = seriesUrlTxt.getText().toString();
+            String seriesId = seriesIdTextTxt.getText().toString();
+            String title = seriesNameTextTxt.getText().toString();
+            String imageUrl = seriesUrlTextTxt.getText().toString();
             updateSeries(series.id, seriesId, title, imageUrl);
             return true;
         } else {
@@ -40,9 +40,9 @@ public class EditSeriesActivity extends BaseAddEditSeriesActivity {
     }
 
     private void showData() {
-        seriesIdTxt.setText(series.seriesId);
-        seriesNameTxt.setText(series.title);
-        seriesUrlTxt.setText(series.imageUrl);
+        seriesIdTextTxt.setText(series.seriesId);
+        seriesNameTextTxt.setText(series.title);
+        seriesUrlTextTxt.setText(series.imageUrl);
     }
     //TODO : where series method i gave there i need to change the method names to adding the (Item)
     private void updateSeries(String id, String seriesId, String title, String imageUrl) {

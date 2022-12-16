@@ -17,7 +17,7 @@
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/series_id_txt"
+        android:id="@+id/series_id_text_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -32,7 +32,7 @@
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/series_name_txt"
+        android:id="@+id/series_name_text_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -47,7 +47,7 @@
         android:textSize="16sp" />
 
     <EditText
-        android:id="@+id/series_url_txt"
+        android:id="@+id/series_url_text_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
