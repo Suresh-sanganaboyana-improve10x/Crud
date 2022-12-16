@@ -47,17 +47,19 @@ public class TemplatesActivity extends BaseActivity {
     }
 
     private void deleteTemplate(String id) {
-        //TODO : call here show progressBar method
+        showVisible();
         Call<Void> call = crudService.deleteTemplate(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                hideVisible();
                 showToast("Successfully delete the template");
                 fetchData();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                hideVisible();
                 showToast("Failed to delete template");
             }
         });
@@ -101,8 +103,8 @@ public class TemplatesActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<List<Template>> call, Throwable t) {
-                showToast("Failed to fetch data");
                 hideVisible();
+                showToast("Failed to fetch data");
             }
         });
     }
