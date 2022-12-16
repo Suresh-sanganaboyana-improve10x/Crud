@@ -36,7 +36,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".series.AddSeriesActivity"
+            android:name=".series.AddSeriesItemActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
