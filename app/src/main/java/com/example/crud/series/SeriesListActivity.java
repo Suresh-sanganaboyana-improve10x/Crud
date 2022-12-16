@@ -93,8 +93,8 @@ public class SeriesListActivity extends BaseActivity {
             @Override
             public void onResponse(Call<List<SeriesItem>> call, Response<List<SeriesItem>> response) {
                 hideVisibility();
-                List<SeriesItem> seriesItemList = response.body();
-                seriesAdapter.setupData(seriesItemList);
+                List<SeriesItem> seriesItems = response.body();
+                seriesAdapter.setupData(seriesItems);
                 showToast("Successfully fetch the data");
             }
 
