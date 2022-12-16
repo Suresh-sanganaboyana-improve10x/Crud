@@ -123,17 +123,19 @@ public class MoviesActivity extends BaseActivity {
     }
 
     private void deleteMovie(String id) {
-        //TODO : call here progressBar showVisibility when delete the movie
+        showVisibility();
         Call<Void> call = crudService.deleteMovie(id);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                hideVisibility();
                 showToast("delete movie successfully");
                 fetchMovies();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                hideVisibility();
                 showToast("failed to delete movie");
             }
         });
