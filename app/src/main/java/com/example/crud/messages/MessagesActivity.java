@@ -53,13 +53,14 @@ public class MessagesActivity extends BaseActivity {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                //TODO : give here and onFailure hideVisibility
+                hideVisible();
                 showToast("Deleted the message");
                 fetchMessages();
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                hideVisible();
                 showToast("Failed to delete message");
             }
         });
