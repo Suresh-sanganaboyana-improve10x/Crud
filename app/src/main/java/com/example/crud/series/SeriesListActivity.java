@@ -24,7 +24,7 @@ import retrofit2.Response;
     //TODO : change seriesListActivity to seriesItemsActivity
 public class SeriesListActivity extends BaseActivity {
     //TODO : series object name change to seriesItems
-    private ArrayList<Series> seriesList = new ArrayList<>();
+    private ArrayList<SeriesItem> seriesItemList = new ArrayList<>();
     private RecyclerView seriesItemsRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
@@ -40,9 +40,9 @@ public class SeriesListActivity extends BaseActivity {
         seriesItemsRv();
     }
 
-    private void updateSeries(Series series) {
+    private void updateSeries(SeriesItem seriesItem) {
         Intent intent = new Intent(this, EditSeriesItemActivity.class);
-        intent.putExtra(Constants.KEY_SERIES, series);
+        intent.putExtra(Constants.KEY_SERIES, seriesItem);
         startActivity(intent);
     }
 
@@ -88,18 +88,18 @@ public class SeriesListActivity extends BaseActivity {
 
     private void fetchSeries() {
         showVisibility();
-        Call<List<Series>> call = crudService.fetchSeriesItems();
-        call.enqueue(new Callback<List<Series>>() {
+        Call<List<SeriesItem>> call = crudService.fetchSeriesItems();
+        call.enqueue(new Callback<List<SeriesItem>>() {
             @Override
-            public void onResponse(Call<List<Series>> call, Response<List<Series>> response) {
+            public void onResponse(Call<List<SeriesItem>> call, Response<List<SeriesItem>> response) {
                 hideVisibility();
-                List<Series> seriesList = response.body();
-                seriesAdapter.setupData(seriesList);
+                List<SeriesItem> seriesItemList = response.body();
+                seriesAdapter.setupData(seriesItemList);
                 showToast("Successfully fetch the data");
             }
 
             @Override
-            public void onFailure(Call<List<Series>> call, Throwable t) {
+            public void onFailure(Call<List<SeriesItem>> call, Throwable t) {
                 hideVisibility();
                 showToast("Failed to load data");
             }
@@ -113,7 +113,7 @@ public class SeriesListActivity extends BaseActivity {
 
     private void setupSeriesAdapter() {
         seriesAdapter = new SeriesAdapter();
-        seriesAdapter.setupData(seriesList);
+        seriesAdapter.setupData(seriesItemList);
         seriesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
@@ -122,8 +122,8 @@ public class SeriesListActivity extends BaseActivity {
             }
 
             @Override
-            public void onEdit(Series series) {
-                updateSeries(series);
+            public void onEdit(SeriesItem seriesItem) {
+                updateSeries(seriesItem);
                 showToast("Failed to load data");
             }
         });
