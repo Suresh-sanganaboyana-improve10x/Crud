@@ -32,7 +32,7 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesActivity {
             String seriesId = seriesIdTxt.getText().toString();
             String title = seriesNameTxt.getText().toString();
             String imageUrl = seriesUrlTxt.getText().toString();
-            updateSeries(series.id, seriesId, title, imageUrl);
+            updateSeriesItem(series.id, seriesId, title, imageUrl);
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -44,8 +44,8 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesActivity {
         seriesNameTxt.setText(series.title);
         seriesUrlTxt.setText(series.imageUrl);
     }
-    //TODO : where series method i gave there i need to change the method names to adding the (Item)
-    private void updateSeries(String id, String seriesId, String title, String imageUrl) {
+
+    private void updateSeriesItem(String id, String seriesId, String title, String imageUrl) {
         //TODO : create Constructor for Series
         series = new Series();
         series.seriesId = seriesId;
