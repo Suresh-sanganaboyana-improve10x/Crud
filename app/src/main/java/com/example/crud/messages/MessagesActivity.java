@@ -48,7 +48,7 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void deleteMessage(String id) {
-        //TODO : give here progressBar showVisibility
+        showVisible();
         Call<Void> call = crudService.deleteMessage(id);
         call.enqueue(new Callback<Void>() {
             @Override
