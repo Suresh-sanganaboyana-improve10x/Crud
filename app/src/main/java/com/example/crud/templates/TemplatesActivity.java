@@ -23,8 +23,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TemplatesActivity extends BaseActivity {
-    //TODO : object Name change to Templates
-    private ArrayList<Template> templatesList = new ArrayList<>();
+
+    private ArrayList<Template> templates = new ArrayList<>();
     private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
     private ProgressBar progressBar;
@@ -114,7 +114,7 @@ public class TemplatesActivity extends BaseActivity {
 
     private void setupTemplatesAdapter() {
         templatesAdapter = new TemplatesAdapter();
-        templatesAdapter.setData(templatesList);
+        templatesAdapter.setData(templates);
         templatesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
