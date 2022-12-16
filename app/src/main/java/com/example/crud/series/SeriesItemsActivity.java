@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeriesItemsActivity extends BaseActivity {
-    //TODO : series object name change to seriesItems
+
     private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
     private RecyclerView seriesItemsRv;
     private SeriesItemsAdapter seriesItemsAdapter;
