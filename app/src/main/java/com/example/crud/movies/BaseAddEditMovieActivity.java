@@ -48,8 +48,8 @@ public class BaseAddEditMovieActivity extends BaseActivity {
             @Override
             public void onResponse(Call<List<SeriesItem>> call, Response<List<SeriesItem>> response) {
                 showToast("Successfully fetch seriesList");
-                List<SeriesItem> seriesItemList = response.body();
-                customSeriesAdapter.addAll(seriesItemList);
+                List<SeriesItem> seriesItems = response.body();
+                customSeriesAdapter.addAll(seriesItems);
                 if (movie != null) {
                     showData();
                 }
