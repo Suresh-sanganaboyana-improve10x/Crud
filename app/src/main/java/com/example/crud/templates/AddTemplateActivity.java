@@ -32,8 +32,7 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
     }
 
     private void addTemplate(String messageText) {
-        //TODO : create constructor for Template
-        Template template = new Template();
+        Template template = new Template(messageText);
         template.messageText = messageText;
 
         Call<Template> call = crudService.createTemplate(template);
