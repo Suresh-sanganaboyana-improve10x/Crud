@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.example.crud.R;
-import com.example.crud.series.Series;
+import com.example.crud.series.SeriesItem;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,8 +23,8 @@ public class AddMovieActivity extends BaseAddEditMovieActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            Series series = (Series) seriesSp.getSelectedItem();
-            String seriesId = series.seriesId;
+            SeriesItem seriesItem = (SeriesItem) seriesSp.getSelectedItem();
+            String seriesId = seriesItem.seriesId;
             String movieId = movieIdTextTxt.getText().toString();
             String title = movieNameTextTxt.getText().toString();
             String imageUrl = imageUrlTextTxt.getText().toString();

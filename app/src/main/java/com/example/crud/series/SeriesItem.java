@@ -3,8 +3,8 @@ package com.example.crud.series;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-    //TODO : class name change to SeriesItem
-public class Series implements Serializable {
+
+public class SeriesItem implements Serializable {
     @SerializedName("_id")
     public String id;
     public String seriesId;

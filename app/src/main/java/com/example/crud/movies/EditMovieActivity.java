@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.example.crud.Constants;
 import com.example.crud.R;
-import com.example.crud.series.Series;
+import com.example.crud.series.SeriesItem;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,8 +31,8 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
             String movieId = movieIdTextTxt.getText().toString();
-            Series series = (Series) seriesSp.getSelectedItem();
-            String seriesId = series.seriesId;
+            SeriesItem seriesItem = (SeriesItem) seriesSp.getSelectedItem();
+            String seriesId = seriesItem.seriesId;
             String imageUrl = imageUrlTextTxt.getText().toString();
             String movieName = movieNameTextTxt.getText().toString();
             String description = descriptionTextTxt.getText().toString();
@@ -72,8 +72,8 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
         imageUrlTextTxt.setText(movie.imageUrl);
         descriptionTextTxt.setText(movie.description);
         for (int i = 0; i<customSeriesAdapter.getCount(); i++) {
-            Series series = customSeriesAdapter.getItem(i);
-            if (movie.id.equals(series.id)) {
+            SeriesItem seriesItem = customSeriesAdapter.getItem(i);
+            if (movie.id.equals(seriesItem.id)) {
                 seriesSp.setSelection(i);
             }
         }

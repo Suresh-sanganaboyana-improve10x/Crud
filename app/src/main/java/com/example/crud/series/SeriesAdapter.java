@@ -14,11 +14,11 @@ import java.util.List;
     //TODO : Adapter class name change to SeriesItemsAdapter
 public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
 
-    private List<Series> seriesList;
+    private List<SeriesItem> seriesItems;
     private OnItemActionListener onItemActionListener;
     //TODO : method name change to setData and method give default and use this key word
-    public void setupData(List<Series> seriesList1) {
-        seriesList = seriesList1;
+    public void setupData(List<SeriesItem> seriesItems) {
+        this.seriesItems = seriesItems;
         notifyDataSetChanged();
     }
 
@@ -35,19 +35,19 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull SeriesViewHolder holder, int position) {
-        Series series = seriesList.get(position);
-        Picasso.get().load(series.imageUrl).into(holder.imageUrl);
-        holder.titleTextTxt.setText(series.title);
+        SeriesItem seriesItem = seriesItems.get(position);
+        Picasso.get().load(seriesItem.imageUrl).into(holder.imageUrl);
+        holder.titleTextTxt.setText(seriesItem.title);
         holder.deleteBtn.setOnClickListener(view -> {
-            onItemActionListener.onDelete(series.id);
+            onItemActionListener.onDelete(seriesItem.id);
         });
         holder.itemView.setOnClickListener(view -> {
-            onItemActionListener.onEdit(series);
+            onItemActionListener.onEdit(seriesItem);
         });
     }
 
     @Override
     public int getItemCount() {
-        return seriesList.size();
+        return seriesItems.size();
     }
 }
