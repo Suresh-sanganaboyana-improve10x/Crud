@@ -36,21 +36,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".seriesItem.AddSeriesItemActivity"
+            android:name=".series.AddSeriesItemActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".seriesItem.EditSeriesItemActivity"
+            android:name=".series.EditSeriesItemActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".seriesItem.SeriesListActivity"
+            android:name=".series.SeriesListActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
