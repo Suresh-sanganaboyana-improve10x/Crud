@@ -11,8 +11,8 @@ import com.example.crud.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-    //TODO :change editSeriesActivity to editSeriesItemActivity
-public class EditSeriesActivity extends BaseAddEditSeriesActivity {
+
+public class EditSeriesItemActivity extends BaseAddEditSeriesActivity {
 
     private Series series;
 
