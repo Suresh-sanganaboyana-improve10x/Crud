@@ -13,15 +13,14 @@ import com.example.crud.R;
 public class SeriesItemViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageUrl;
-    //TODO : textView object name change to titleTxt and id name also change
-    TextView titleTextTxt;
+    TextView titleTxt;
     //TODO : ImageButton object name change to deleteImgBtn
     ImageButton deleteBtn;
 
     public SeriesItemViewHolder(@NonNull View itemView) {
         super(itemView);
         imageUrl = itemView.findViewById(R.id.image_url);
-        titleTextTxt = itemView.findViewById(R.id.title_text_txt);
+        titleTxt = itemView.findViewById(R.id.title_txt);
         deleteBtn = itemView.findViewById(R.id.delete_btn);
     }
 }
