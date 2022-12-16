@@ -24,6 +24,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
      void setOnItemActionListener(OnItemActionListener onItemActionListener) {
         this.onItemActionListener = onItemActionListener;
     }
+
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
