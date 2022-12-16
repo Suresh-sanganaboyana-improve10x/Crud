@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.R;
-    //TODO : seriesViewHolder change to seriesItemViewHolder
-public class SeriesViewHolder extends RecyclerView.ViewHolder {
+
+public class SeriesItemViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageUrl;
     //TODO : textView object name change to titleTxt and id name also change
@@ -18,7 +18,7 @@ public class SeriesViewHolder extends RecyclerView.ViewHolder {
     //TODO : ImageButton object name change to deleteImgBtn
     ImageButton deleteBtn;
 
-    public SeriesViewHolder(@NonNull View itemView) {
+    public SeriesItemViewHolder(@NonNull View itemView) {
         super(itemView);
         imageUrl = itemView.findViewById(R.id.image_url);
         titleTextTxt = itemView.findViewById(R.id.title_text_txt);
