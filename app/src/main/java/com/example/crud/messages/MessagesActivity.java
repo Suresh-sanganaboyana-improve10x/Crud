@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
 
-    private ArrayList<Message> messageList = new ArrayList<>();
+    private ArrayList<Message> messages = new ArrayList<>();
     private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
     private ProgressBar progressBar;
@@ -117,7 +117,7 @@ public class MessagesActivity extends BaseActivity {
 
     private void setupMessagesAdapter() {
         messagesAdapter = new MessagesAdapter();
-        messagesAdapter.setData(messageList);
+        messagesAdapter.setData(messages);
         messagesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {

@@ -27,6 +27,7 @@ public class DashboardItemsActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        //Todo : dashboardItemsRv also change the id name
         dashboardItemsRv = findViewById(R.id.dashboard_rv);
     }
 

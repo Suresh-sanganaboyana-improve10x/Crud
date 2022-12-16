@@ -15,7 +15,7 @@ public class TemplatesAdapter extends RecyclerView.Adapter<TemplateViewHolder> {
 
     private OnItemActionListener onItemActionListener;
     private List<Template> templateList;
-    //TODO : give default method
+    //TODO : give default method and DashboardItemsAdapter
     public void setData(List<Template> templates) {
         templateList = templates;
         notifyDataSetChanged();

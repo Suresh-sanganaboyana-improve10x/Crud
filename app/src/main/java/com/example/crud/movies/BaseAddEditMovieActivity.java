@@ -17,8 +17,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BaseAddEditMovieActivity extends BaseActivity {
-
+    //Todo : seriesSp object name change to  seriesItemsSp and method name also change
     protected Spinner seriesSp;
+    //Todo : object name change customSeriesAdapter to customSeriesItemsAdapter and Class name Also change
     protected CustomSeriesAdapter customSeriesAdapter;
     private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
     protected EditText movieIdTextTxt;

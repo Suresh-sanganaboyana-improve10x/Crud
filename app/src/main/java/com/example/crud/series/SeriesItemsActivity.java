@@ -36,7 +36,7 @@ public class SeriesItemsActivity extends BaseActivity {
         log("onCreate");
         getSupportActionBar().setTitle("Series");
         findViews();
-        setupSeriesAdapter();
+        setupSeriesItemsAdapter();
         seriesItemsRv();
     }
 
@@ -111,7 +111,7 @@ public class SeriesItemsActivity extends BaseActivity {
         seriesItemsRv = findViewById(R.id.series_items_rv);
     }
 
-    private void setupSeriesAdapter() {
+    private void setupSeriesItemsAdapter() {
         seriesItemsAdapter = new SeriesItemsAdapter();
         seriesItemsAdapter.setData(seriesItems);
         seriesItemsAdapter.setOnItemActionListener(new OnItemActionListener() {
