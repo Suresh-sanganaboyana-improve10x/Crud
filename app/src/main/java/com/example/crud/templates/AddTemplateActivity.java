@@ -45,7 +45,7 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
 
             @Override
             public void onFailure(Call<Template> call, Throwable t) {
-                //TODO : call show 'toast for Failed to add the Template'
+                showToast("Failed to add template");
             }
         });
     }
