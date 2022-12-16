@@ -20,9 +20,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
         this.messages = messages;
         notifyDataSetChanged();
     }
-    //TODO : give default method for setOnItemActionListener use this key word
-    public void setOnItemActionListener(OnItemActionListener itemActionListener) {
-        onItemActionListener = itemActionListener;
+
+     void setOnItemActionListener(OnItemActionListener onItemActionListener) {
+        this.onItemActionListener = onItemActionListener;
     }
     @NonNull
     @Override
