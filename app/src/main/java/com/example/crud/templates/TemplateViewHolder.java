@@ -16,7 +16,7 @@ public class TemplateViewHolder extends RecyclerView.ViewHolder {
 
     public TemplateViewHolder(@NonNull View itemView) {
         super(itemView);
-        messageTextTxt = itemView.findViewById(R.id.message_txt);
+        messageTextTxt = itemView.findViewById(R.id.message_text_txt);
         deleteImgBtn = itemView.findViewById(R.id.delete_img_btn);
     }
 }
