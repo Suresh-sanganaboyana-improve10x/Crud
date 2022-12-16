@@ -9,9 +9,9 @@ import com.example.crud.base.BaseActivity;
 
 public class BaseAddEditSeriesActivity extends BaseActivity {
 
-    protected EditText seriesIdTextTxt;
-    protected EditText seriesNameTextTxt;
-    protected EditText seriesUrlTextTxt;
+    protected EditText seriesIdTxt;
+    protected EditText seriesNameTxt;
+    protected EditText seriesUrlTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +21,9 @@ public class BaseAddEditSeriesActivity extends BaseActivity {
     }
 
     protected void initView() {
-        seriesIdTextTxt = findViewById(R.id.series_id_text_txt);
-        seriesNameTextTxt = findViewById(R.id.series_name_text_txt);
-        seriesUrlTextTxt = findViewById(R.id.series_url_text_txt);
+        seriesIdTxt = findViewById(R.id.series_id_txt);
+        seriesNameTxt = findViewById(R.id.series_name_txt);
+        seriesUrlTxt = findViewById(R.id.series_url_txt);
     }
 
     @Override
