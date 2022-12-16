@@ -1,25 +1,14 @@
 package com.example.crud.series;
 
-import androidx.annotation.NonNull;
-
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.crud.Api.CrudApi;
-import com.example.crud.Api.CrudService;
-import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class BaseAddEditSeriesActivity extends BaseActivity {
-    //TODO : Class object names will be (TextTxt)
+
     protected EditText seriesIdTxt;
     protected EditText seriesNameTxt;
     protected EditText seriesUrlTxt;
