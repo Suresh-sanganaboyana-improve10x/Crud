@@ -24,7 +24,7 @@ import retrofit2.Response;
     //TODO : change seriesListActivity to seriesItemsActivity
 public class SeriesListActivity extends BaseActivity {
     //TODO : series object name change to seriesItems
-    private ArrayList<SeriesItem> seriesItemList = new ArrayList<>();
+    private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
     private RecyclerView seriesItemsRv;
     private SeriesAdapter seriesAdapter;
     private ProgressBar progressBar;
@@ -113,7 +113,7 @@ public class SeriesListActivity extends BaseActivity {
 
     private void setupSeriesAdapter() {
         seriesAdapter = new SeriesAdapter();
-        seriesAdapter.setupData(seriesItemList);
+        seriesAdapter.setupData(seriesItems);
         seriesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
