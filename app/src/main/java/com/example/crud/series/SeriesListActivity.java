@@ -94,7 +94,7 @@ public class SeriesListActivity extends BaseActivity {
             public void onResponse(Call<List<SeriesItem>> call, Response<List<SeriesItem>> response) {
                 hideVisibility();
                 List<SeriesItem> seriesItems = response.body();
-                seriesItemsAdapter.setupData(seriesItems);
+                seriesItemsAdapter.setData(seriesItems);
                 showToast("Successfully fetch the data");
             }
 
@@ -113,7 +113,7 @@ public class SeriesListActivity extends BaseActivity {
 
     private void setupSeriesAdapter() {
         seriesItemsAdapter = new SeriesItemsAdapter();
-        seriesItemsAdapter.setupData(seriesItems);
+        seriesItemsAdapter.setData(seriesItems);
         seriesItemsAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
