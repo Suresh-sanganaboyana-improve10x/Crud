@@ -16,14 +16,14 @@ public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
 
     private List<SeriesItem> seriesItems;
     private OnItemActionListener onItemActionListener;
-    //TODO : method name change to setData and method give default and use this key word
-    public void setupData(List<SeriesItem> seriesItems) {
+
+     void setData(List<SeriesItem> seriesItems) {
         this.seriesItems = seriesItems;
         notifyDataSetChanged();
     }
 
-    public void setOnItemActionListener(OnItemActionListener actionListener) {
-        onItemActionListener = actionListener;
+     void setOnItemActionListener(OnItemActionListener onItemActionListener) {
+        this.onItemActionListener = onItemActionListener;
     }
     @NonNull
     @Override
