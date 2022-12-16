@@ -13,11 +13,11 @@ import java.util.List;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
-    private List<Message> messageList;
+    private List<Message> messages;
     private OnItemActionListener onItemActionListener;
-    //TODO : give default method and use (this) keyWord
-    public void setData(List<Message> messages) {
-        messageList = messages;
+
+     void setData(List<Message> messages) {
+        this.messages = messages;
         notifyDataSetChanged();
     }
     //TODO : give default method for setOnItemActionListener use this key word
@@ -34,7 +34,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MessageViewHolder holder, int position) {
-        Message message = messageList.get(position);
+        Message message = messages.get(position);
         holder.nameTxt.setText(message.nameText);
         holder.phoneNumberTxt.setText(message.phoneNumberText);
         holder.messageTxt.setText(message.messageText);
@@ -48,6 +48,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessageViewHolder> {
 
     @Override
     public int getItemCount() {
-        return messageList.size();
+        return messages.size();
     }
 }
