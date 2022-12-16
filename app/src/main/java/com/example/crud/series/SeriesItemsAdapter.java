@@ -11,8 +11,8 @@ import com.example.crud.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-    //TODO : Adapter class name change to SeriesItemsAdapter
-public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
+
+public class SeriesItemsAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
 
     private List<SeriesItem> seriesItems;
     private OnItemActionListener onItemActionListener;
