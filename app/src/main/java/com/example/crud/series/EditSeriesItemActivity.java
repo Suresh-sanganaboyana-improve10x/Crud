@@ -46,11 +46,7 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesActivity {
     }
 
     private void updateSeriesItem(String id, String seriesId, String title, String imageUrl) {
-        //TODO : create Constructor for Series
-        seriesItem = new SeriesItem();
-        seriesItem.seriesId = seriesId;
-        seriesItem.title = title;
-        seriesItem.imageUrl = imageUrl;
+        SeriesItem seriesItem = new SeriesItem(seriesId, title, imageUrl);
 
         Call<Void> call = crudService.editSeriesItem(id, seriesItem);
         call.enqueue(new Callback<Void>() {
