@@ -71,8 +71,8 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
         movieNameTextTxt.setText(movie.name);
         imageUrlTextTxt.setText(movie.imageUrl);
         descriptionTextTxt.setText(movie.description);
-        for (int i = 0; i<customSeriesAdapter.getCount(); i++) {
-            SeriesItem seriesItem = customSeriesAdapter.getItem(i);
+        for (int i = 0; i< customSeriesItemsAdapter.getCount(); i++) {
+            SeriesItem seriesItem = customSeriesItemsAdapter.getItem(i);
             if (movie.id.equals(seriesItem.id)) {
                 seriesItemsSp.setSelection(i);
             }
