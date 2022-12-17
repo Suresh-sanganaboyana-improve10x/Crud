@@ -17,8 +17,7 @@ public class BaseAddEditMessageActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Todo : all BaseAddEditActivities xml files changes and menu files also changed
-        setContentView(R.layout.activity_add_edit_message);
+        setContentView(R.layout.activity_base_add_edit_message);
         initViews();
         //Todo : Delete log method in onCreate, onResume methods all classes
         log("onCreate");
@@ -26,7 +25,7 @@ public class BaseAddEditMessageActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.add_edit_messages_menu, menu);
+        getMenuInflater().inflate(R.menu.base_add_edit_messages_menu, menu);
         return true;
     }
 

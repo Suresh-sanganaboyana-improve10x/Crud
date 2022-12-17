@@ -38,7 +38,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.movie_add_edit_menu, menu);
+        getMenuInflater().inflate(R.menu.base_add_edit_movies_menu, menu);
         return true;
     }
 
