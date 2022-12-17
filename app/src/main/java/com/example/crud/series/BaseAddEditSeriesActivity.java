@@ -16,7 +16,7 @@ public class BaseAddEditSeriesActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base_add_edit_series);
+        setContentView(R.layout.activity_base_add_edit_series_item);
         initView();
     }
 
