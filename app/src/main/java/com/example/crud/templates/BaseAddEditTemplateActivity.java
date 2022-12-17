@@ -14,13 +14,13 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit_template);
+        setContentView(R.layout.activity_base_add_edit_template);
         initView();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.add_edit_messages_menu, menu);
+        getMenuInflater().inflate(R.menu.templates_menu, menu);
         return true;
     }
 
