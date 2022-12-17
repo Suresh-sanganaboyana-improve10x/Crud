@@ -1,21 +1,11 @@
 package com.example.crud.templates;
 
-import androidx.annotation.NonNull;
-
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.example.crud.Api.CrudApi;
-import com.example.crud.Api.CrudService;
-import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class BaseAddEditTemplateActivity extends BaseActivity {
 

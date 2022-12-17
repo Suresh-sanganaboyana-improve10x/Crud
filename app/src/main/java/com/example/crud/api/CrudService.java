@@ -1,4 +1,4 @@
-package com.example.crud.Api;
+package com.example.crud.api;
 
 import com.example.crud.Constants;
 import com.example.crud.messages.Message;
