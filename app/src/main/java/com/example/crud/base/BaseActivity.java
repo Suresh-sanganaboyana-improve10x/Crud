@@ -18,6 +18,13 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupApiService();
+        log("onCreate");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        log("onResume");
     }
 
     protected void showToast(String message) {
@@ -29,7 +36,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void log(String message) {
-        //Todo : getLocalClassName method change
+        //Todo : getLocalClassName method change getClass.getSimpleName
         Log.i(this.getLocalClassName(), message);
     }
 
