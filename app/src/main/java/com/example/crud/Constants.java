@@ -6,7 +6,7 @@ public class Constants {
 
     public static final String KEY_TEMPLATE = "Template";
 
-    public static final String KEY_SERIES_ITEMS = "Series";
+    public static final String KEY_SERIES_ITEM = "Series";
 
     public static final String KEY_MOVIE = "Movies";
 

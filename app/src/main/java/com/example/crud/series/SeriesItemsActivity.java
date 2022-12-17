@@ -42,7 +42,7 @@ public class SeriesItemsActivity extends BaseActivity {
 
     private void updateSeries(SeriesItem seriesItem) {
         Intent intent = new Intent(this, EditSeriesItemActivity.class);
-        intent.putExtra(Constants.KEY_SERIES_ITEMS, seriesItem);
+        intent.putExtra(Constants.KEY_SERIES_ITEM, seriesItem);
         startActivity(intent);
     }
 
