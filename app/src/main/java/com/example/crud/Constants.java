@@ -6,8 +6,8 @@ public class Constants {
 
     public static final String KEY_TEMPLATE = "Template";
 
-    public static final String KEY_SERIES = "Series";
-    //TODO : Key movies name to change Movie
+    public static final String KEY_SERIES_ITEMS = "Series";
+
     public static final String KEY_MOVIE = "Movies";
 
     public static final String BASE_URL = "https://crudcrud.com/api/479dd07f8c1d482e9219f7dcb48e25f4/";
