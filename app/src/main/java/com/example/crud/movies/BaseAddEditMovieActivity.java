@@ -17,8 +17,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BaseAddEditMovieActivity extends BaseActivity {
-    //Todo : seriesSp object name change to  seriesItemsSp and method name also change
-    protected Spinner seriesSp;
+
+    protected Spinner seriesItemsSp;
     //Todo : object name change customSeriesAdapter to customSeriesItemsAdapter and Class name Also change
     protected CustomSeriesAdapter customSeriesAdapter;
     private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
@@ -31,10 +31,10 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit_movie);
+        setContentView(R.layout.activity_base_add_edit_movie);
         fetchSeries();
         initViews();
-        setupSeriesSp();
+        setupSeriesItemsSp();
     }
 
     @Override
@@ -71,21 +71,20 @@ public class BaseAddEditMovieActivity extends BaseActivity {
         for (int i = 0; i<customSeriesAdapter.getCount(); i++) {
             SeriesItem seriesItem = customSeriesAdapter.getItem(i);
             if (movie.id.equals(seriesItem.id)) {
-                seriesSp.setSelection(i);
+                seriesItemsSp.setSelection(i);
             }
         }
     }
 
-    private void setupSeriesSp() {
-        seriesSp = findViewById(R.id.series_sp);
+    private void setupSeriesItemsSp() {
         customSeriesAdapter = new CustomSeriesAdapter(this, android.R.layout.simple_list_item_1, seriesItems);
-        seriesSp.setAdapter(customSeriesAdapter);
+        seriesItemsSp.setAdapter(customSeriesAdapter);
     }
 
     private void initViews() {
         movieIdTextTxt = findViewById(R.id.movie_id_text_txt);
         movieNameTextTxt = findViewById(R.id.movie_name_text_txt);
-        seriesSp = findViewById(R.id.series_sp);
+        seriesItemsSp = findViewById(R.id.series_items_sp);
         imageUrlTextTxt = findViewById(R.id.image_url_text_txt);
         descriptionTextTxt = findViewById(R.id.description_text_txt);
     }
