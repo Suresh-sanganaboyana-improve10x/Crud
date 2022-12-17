@@ -15,8 +15,8 @@ public class Constants {
     public static final String MESSAGES_END_POINT = "sureshMessageHistory";
 
     public static final String TEMPLATES_END_POINT = "sureshTemplate";
-    //TODO : series end point change to seriesItemsEndPoint
-    public static final String SERIES_END_POINT = "sureshSeries";
+
+    public static final String SERIES_ITEMS_END_POINT = "sureshSeries";
 
     public static final String MOVIES_END_POINT = "sureshMovies";
 }
