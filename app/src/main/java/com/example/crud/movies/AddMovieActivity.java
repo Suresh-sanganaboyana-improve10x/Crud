@@ -23,7 +23,7 @@ public class AddMovieActivity extends BaseAddEditMovieActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            SeriesItem seriesItem = (SeriesItem) seriesSp.getSelectedItem();
+            SeriesItem seriesItem = (SeriesItem) seriesItemsSp.getSelectedItem();
             String seriesId = seriesItem.seriesId;
             String movieId = movieIdTextTxt.getText().toString();
             String title = movieNameTextTxt.getText().toString();

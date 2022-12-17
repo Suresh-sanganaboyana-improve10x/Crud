@@ -31,7 +31,7 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
             String movieId = movieIdTextTxt.getText().toString();
-            SeriesItem seriesItem = (SeriesItem) seriesSp.getSelectedItem();
+            SeriesItem seriesItem = (SeriesItem) seriesItemsSp.getSelectedItem();
             String seriesId = seriesItem.seriesId;
             String imageUrl = imageUrlTextTxt.getText().toString();
             String movieName = movieNameTextTxt.getText().toString();
@@ -74,7 +74,7 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
         for (int i = 0; i<customSeriesAdapter.getCount(); i++) {
             SeriesItem seriesItem = customSeriesAdapter.getItem(i);
             if (movie.id.equals(seriesItem.id)) {
-                seriesSp.setSelection(i);
+                seriesItemsSp.setSelection(i);
             }
         }
     }
