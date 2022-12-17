@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class MoviesActivity extends BaseActivity {
 
-    private ArrayList<Movie> movieList = new ArrayList<>();
+    private ArrayList<Movie> movies = new ArrayList<>();
     private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
     private ProgressBar progressBar;
@@ -99,7 +99,7 @@ public class MoviesActivity extends BaseActivity {
 
     private void setupMoviesAdapter() {
         moviesAdapter = new MoviesAdapter();
-        moviesAdapter.setData(movieList);
+        moviesAdapter.setData(movies);
         moviesAdapter.setOnItemActionListener(new OnItemActionListener() {
             @Override
             public void onDelete(String id) {
