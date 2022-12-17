@@ -19,7 +19,7 @@ public class DashboardItemsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_dashboard_items);
         getSupportActionBar().setTitle("Dashboard");
         findViews();
         setupData();
@@ -27,8 +27,7 @@ public class DashboardItemsActivity extends AppCompatActivity {
     }
 
     private void findViews() {
-        //Todo : dashboardItemsRv also change the id name
-        dashboardItemsRv = findViewById(R.id.dashboard_rv);
+        dashboardItemsRv = findViewById(R.id.dashboard_items_rv);
     }
 
     private void setupDashboardItemsRv() {

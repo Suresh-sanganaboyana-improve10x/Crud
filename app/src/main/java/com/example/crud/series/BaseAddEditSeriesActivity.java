@@ -28,7 +28,7 @@ public class BaseAddEditSeriesActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.add_edit_series_menu, menu);
+        getMenuInflater().inflate(R.menu.add_edit_series_items_menu, menu);
         return true;
     }
 }

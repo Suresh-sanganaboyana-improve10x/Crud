@@ -32,7 +32,7 @@ public class SeriesItemsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_series_list);
+        setContentView(R.layout.activity_series_items);
         log("onCreate");
         getSupportActionBar().setTitle("Series");
         findViews();
@@ -64,7 +64,7 @@ public class SeriesItemsActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.series_menu, menu);
+        getMenuInflater().inflate(R.menu.series_items_menu, menu);
         return true;
     }
 

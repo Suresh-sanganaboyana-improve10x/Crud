@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".dashboardItem.DashboardActivity">
+    tools:context=".dashboard.DashboardItemsActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dashboard_rv"
+        android:id="@+id/dashboard_items_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
