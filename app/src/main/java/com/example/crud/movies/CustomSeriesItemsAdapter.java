@@ -15,9 +15,9 @@ import com.example.crud.series.SeriesItem;
 
 import java.util.List;
 
-public class CustomSeriesAdapter extends ArrayAdapter<SeriesItem> {
+public class CustomSeriesItemsAdapter extends ArrayAdapter<SeriesItem> {
 
-    public CustomSeriesAdapter(@NonNull Context context, int resource, @NonNull List<SeriesItem> objects) {
+    public CustomSeriesItemsAdapter(@NonNull Context context, int resource, @NonNull List<SeriesItem> objects) {
         super(context, resource, objects);
     }
 

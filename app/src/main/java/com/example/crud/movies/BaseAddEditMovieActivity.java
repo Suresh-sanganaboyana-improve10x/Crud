@@ -19,8 +19,7 @@ import retrofit2.Response;
 public class BaseAddEditMovieActivity extends BaseActivity {
 
     protected Spinner seriesItemsSp;
-    //Todo : object name change customSeriesAdapter to customSeriesItemsAdapter and Class name Also change
-    protected CustomSeriesAdapter customSeriesAdapter;
+    protected CustomSeriesItemsAdapter customSeriesItemsAdapter;
     private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
     protected EditText movieIdTextTxt;
     protected EditText movieNameTextTxt;
@@ -50,7 +49,7 @@ public class BaseAddEditMovieActivity extends BaseActivity {
             public void onResponse(Call<List<SeriesItem>> call, Response<List<SeriesItem>> response) {
                 showToast("Successfully fetch seriesList");
                 List<SeriesItem> seriesItems = response.body();
-                customSeriesAdapter.addAll(seriesItems);
+                customSeriesItemsAdapter.addAll(seriesItems);
                 if (movie != null) {
                     showData();
                 }
@@ -68,8 +67,8 @@ public class BaseAddEditMovieActivity extends BaseActivity {
         movieNameTextTxt.setText(movie.name);
         imageUrlTextTxt.setText(movie.imageUrl);
         descriptionTextTxt.setText(movie.description);
-        for (int i = 0; i<customSeriesAdapter.getCount(); i++) {
-            SeriesItem seriesItem = customSeriesAdapter.getItem(i);
+        for (int i = 0; i< customSeriesItemsAdapter.getCount(); i++) {
+            SeriesItem seriesItem = customSeriesItemsAdapter.getItem(i);
             if (movie.id.equals(seriesItem.id)) {
                 seriesItemsSp.setSelection(i);
             }
@@ -77,8 +76,8 @@ public class BaseAddEditMovieActivity extends BaseActivity {
     }
 
     private void setupSeriesItemsSp() {
-        customSeriesAdapter = new CustomSeriesAdapter(this, android.R.layout.simple_list_item_1, seriesItems);
-        seriesItemsSp.setAdapter(customSeriesAdapter);
+        customSeriesItemsAdapter = new CustomSeriesItemsAdapter(this, android.R.layout.simple_list_item_1, seriesItems);
+        seriesItemsSp.setAdapter(customSeriesItemsAdapter);
     }
 
     private void initViews() {
