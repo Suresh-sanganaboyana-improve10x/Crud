@@ -20,7 +20,7 @@ public class BaseAddEditTemplateActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.base_add_edit_templates_menu, menu);
+        getMenuInflater().inflate(R.menu.templates_menu, menu);
         return true;
     }
 
