@@ -29,6 +29,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void log(String message) {
+        //Todo : getLocalClassName method change
         Log.i(this.getLocalClassName(), message);
     }
 

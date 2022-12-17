@@ -19,6 +19,7 @@ public class BaseAddEditMessageActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit_message);
         initViews();
+        //Todo : Delete log method in onCreate, onResume methods all classes
         log("onCreate");
     }
 
