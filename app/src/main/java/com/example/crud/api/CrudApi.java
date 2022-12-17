@@ -1,5 +1,4 @@
-package com.example.crud.Api;
-//Todo : package name Api to api
+package com.example.crud.api;
 
 import com.example.crud.Constants;
 
