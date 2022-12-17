@@ -17,6 +17,7 @@ public class BaseAddEditMessageActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Todo : all BaseAddEditActivities xml files changes and menu files also changed
         setContentView(R.layout.activity_add_edit_message);
         initViews();
         //Todo : Delete log method in onCreate, onResume methods all classes
