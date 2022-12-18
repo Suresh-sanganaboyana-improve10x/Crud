@@ -33,7 +33,6 @@ public class MoviesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
-        log("onCreate");
         getSupportActionBar().setTitle("Movies");
         findViews();
         setupMoviesAdapter();

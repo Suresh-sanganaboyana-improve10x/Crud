@@ -33,7 +33,6 @@ public class SeriesItemsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_series_items);
-        log("onCreate");
         getSupportActionBar().setTitle("Series");
         findViews();
         setupSeriesItemsAdapter();
