@@ -33,7 +33,6 @@ public class TemplatesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_templates);
-        log("onCreate");
         getSupportActionBar().setTitle("Templates");
         findViews();
         setupTemplatesAdapter();
