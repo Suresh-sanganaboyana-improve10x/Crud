@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
+import com.example.crud.databinding.ActivityTemplatesBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,17 +25,16 @@ import retrofit2.Response;
 
 public class TemplatesActivity extends BaseActivity {
 
+    private ActivityTemplatesBinding binding;
     private ArrayList<Template> templates = new ArrayList<>();
-    private RecyclerView templatesRv;
     private TemplatesAdapter templatesAdapter;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_templates);
+        binding = ActivityTemplatesBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Templates");
-        findViews();
         setupTemplatesAdapter();
         setupTemplatesRv();
     }
@@ -108,11 +108,6 @@ public class TemplatesActivity extends BaseActivity {
         });
     }
 
-    private void findViews() {
-        progressBar = findViewById(R.id.progress_bar);
-        templatesRv = findViewById(R.id.templates_rv);
-    }
-
     private void setupTemplatesAdapter() {
         templatesAdapter = new TemplatesAdapter();
         templatesAdapter.setData(templates);
@@ -131,15 +126,15 @@ public class TemplatesActivity extends BaseActivity {
     }
 
     private void setupTemplatesRv() {
-        templatesRv.setLayoutManager(new LinearLayoutManager(this));
-        templatesRv.setAdapter(templatesAdapter);
+        binding.templatesRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.templatesRv.setAdapter(templatesAdapter);
     }
 
     private void showVisible() {
-        progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
     }
 
     private void hideVisible() {
-        progressBar.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.GONE);
     }
 }

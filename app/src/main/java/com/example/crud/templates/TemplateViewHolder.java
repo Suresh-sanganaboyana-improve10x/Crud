@@ -8,15 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crud.R;
+import com.example.crud.databinding.TemplatesItemBinding;
 
 public class TemplateViewHolder extends RecyclerView.ViewHolder {
 
-    TextView messageTextTxt;
-    ImageButton deleteImgBtn;
+    TemplatesItemBinding binding;
 
-    public TemplateViewHolder(@NonNull View itemView) {
-        super(itemView);
-        messageTextTxt = itemView.findViewById(R.id.message_text_txt);
-        deleteImgBtn = itemView.findViewById(R.id.delete_img_btn);
+    public TemplateViewHolder(TemplatesItemBinding templatesItemBinding) {
+        super(templatesItemBinding.getRoot());
+        binding = templatesItemBinding;
     }
 }

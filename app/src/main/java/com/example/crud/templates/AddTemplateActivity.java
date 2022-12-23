@@ -22,7 +22,7 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String message = messageTxt.getText().toString();
+            String message = binding.messageTxt.getText().toString();
             addTemplate(message);
             return true;
         }
@@ -33,7 +33,6 @@ public class AddTemplateActivity extends BaseAddEditTemplateActivity{
 
     private void addTemplate(String messageText) {
         Template template = new Template(messageText);
-        template.messageText = messageText;
 
         Call<Template> call = crudService.createTemplate(template);
         call.enqueue(new Callback<Template>() {

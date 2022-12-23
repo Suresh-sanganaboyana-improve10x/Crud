@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
+import com.example.crud.databinding.ActivityMessagesBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,20 +25,18 @@ import retrofit2.Response;
 
 public class MessagesActivity extends BaseActivity {
 
+    private ActivityMessagesBinding binding;
     private ArrayList<Message> messages = new ArrayList<>();
-    private RecyclerView messagesRv;
     private MessagesAdapter messagesAdapter;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messages);
+        binding = ActivityMessagesBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Messages");
-        findViews();
         setupMessagesAdapter();
         setupMessagesRv();
-
     }
 
     private void editMessage(Message messages) {
@@ -109,11 +108,6 @@ public class MessagesActivity extends BaseActivity {
         });
     }
 
-    private void findViews() {
-        progressBar = findViewById(R.id.progress_bar);
-        messagesRv = findViewById(R.id.messages_rv);
-    }
-
     private void setupMessagesAdapter() {
         messagesAdapter = new MessagesAdapter();
         messagesAdapter.setData(messages);
@@ -132,15 +126,15 @@ public class MessagesActivity extends BaseActivity {
     }
 
     private void setupMessagesRv() {
-        messagesRv.setLayoutManager(new LinearLayoutManager(this));
-        messagesRv.setAdapter(messagesAdapter);
+        binding.messagesRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.messagesRv.setAdapter(messagesAdapter);
     }
 
     private void showVisible() {
-        progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
     }
 
     private void hideVisible() {
-        progressBar.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.GONE);
     }
 }

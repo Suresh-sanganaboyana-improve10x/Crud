@@ -29,7 +29,7 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String message = messageTxt.getText().toString();
+            String message = binding.messageTxt.getText().toString();
             updateTemplate(this.template.id, message);
             return true;
         } else {
@@ -38,7 +38,7 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
     }
 
     private void showData() {
-        messageTxt.setText(template.messageText);
+        binding.messageTxt.setText(template.messageText);
     }
 
     private void updateTemplate(String id, String messageTxt) {
