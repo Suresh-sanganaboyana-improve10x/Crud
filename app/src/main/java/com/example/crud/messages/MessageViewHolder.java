@@ -13,6 +13,7 @@ import com.example.crud.databinding.MessagesItemBinding;
 public class MessageViewHolder extends RecyclerView.ViewHolder {
 
     MessagesItemBinding binding;
+
     public MessageViewHolder(MessagesItemBinding messagesItemBinding) {
         super(messagesItemBinding.getRoot());
         binding = messagesItemBinding;

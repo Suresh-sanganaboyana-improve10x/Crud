@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
+import com.example.crud.databinding.ActivitySeriesItemsBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,17 +25,16 @@ import retrofit2.Response;
 
 public class SeriesItemsActivity extends BaseActivity {
 
+    private ActivitySeriesItemsBinding binding;
     private ArrayList<SeriesItem> seriesItems = new ArrayList<>();
-    private RecyclerView seriesItemsRv;
     private SeriesItemsAdapter seriesItemsAdapter;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_series_items);
+        binding = ActivitySeriesItemsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Series");
-        findViews();
         setupSeriesItemsAdapter();
         seriesItemsRv();
     }
@@ -105,11 +105,6 @@ public class SeriesItemsActivity extends BaseActivity {
         });
     }
 
-    private void findViews() {
-        progressBar = findViewById(R.id.progress_bar);
-        seriesItemsRv = findViewById(R.id.series_items_rv);
-    }
-
     private void setupSeriesItemsAdapter() {
         seriesItemsAdapter = new SeriesItemsAdapter();
         seriesItemsAdapter.setData(seriesItems);
@@ -129,15 +124,15 @@ public class SeriesItemsActivity extends BaseActivity {
     }
 
     private void seriesItemsRv() {
-        seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
-        seriesItemsRv.setAdapter(seriesItemsAdapter);
+        binding.seriesItemsRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.seriesItemsRv.setAdapter(seriesItemsAdapter);
     }
 
     private void showVisibility() {
-        progressBar.setVisibility(View.VISIBLE);
+         binding.progressBar.setVisibility(View.VISIBLE);
     }
 
     private void hideVisibility() {
-        progressBar.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.GONE);
     }
 }

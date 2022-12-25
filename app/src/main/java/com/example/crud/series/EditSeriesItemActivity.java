@@ -12,7 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditSeriesItemActivity extends BaseAddEditSeriesActivity {
+public class EditSeriesItemActivity extends BaseAddEditSeriesItemActivity {
 
     private SeriesItem seriesItem;
 
@@ -29,9 +29,9 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String seriesId = seriesIdTxt.getText().toString();
-            String title = seriesNameTxt.getText().toString();
-            String imageUrl = seriesUrlTxt.getText().toString();
+            String seriesId = binding.seriesIdTxt.getText().toString();
+            String title = binding.seriesNameTxt.getText().toString();
+            String imageUrl = binding.seriesUrlTxt.getText().toString();
             updateSeriesItem(seriesItem.id, seriesId, title, imageUrl);
             return true;
         } else {
@@ -40,9 +40,9 @@ public class EditSeriesItemActivity extends BaseAddEditSeriesActivity {
     }
 
     private void showData() {
-        seriesIdTxt.setText(seriesItem.seriesId);
-        seriesNameTxt.setText(seriesItem.title);
-        seriesUrlTxt.setText(seriesItem.imageUrl);
+        binding.seriesIdTxt.setText(seriesItem.seriesId);
+        binding.seriesNameTxt.setText(seriesItem.title);
+        binding.seriesUrlTxt.setText(seriesItem.imageUrl);
     }
 
     private void updateSeriesItem(String id, String seriesId, String title, String imageUrl) {
