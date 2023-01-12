@@ -25,10 +25,10 @@ public class AddMovieActivity extends BaseAddEditMovieActivity {
         if (item.getItemId() == R.id.done) {
             SeriesItem seriesItem = (SeriesItem) seriesItemsSp.getSelectedItem();
             String seriesId = seriesItem.seriesId;
-            String movieId = movieIdTextTxt.getText().toString();
-            String title = movieNameTextTxt.getText().toString();
-            String imageUrl = imageUrlTextTxt.getText().toString();
-            String description = descriptionTextTxt.getText().toString();
+            String movieId = binding.movieIdTextTxt.getText().toString();
+            String title = binding.movieNameTextTxt.getText().toString();
+            String imageUrl = binding.imageUrlTextTxt.getText().toString();
+            String description = binding.descriptionTextTxt.getText().toString();
             addMovie(seriesId, movieId, title, imageUrl, description);
             return true;
         } else {

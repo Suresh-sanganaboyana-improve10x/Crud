@@ -30,12 +30,12 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.done) {
-            String movieId = movieIdTextTxt.getText().toString();
+            String movieId = binding.movieIdTextTxt.getText().toString();
             SeriesItem seriesItem = (SeriesItem) seriesItemsSp.getSelectedItem();
             String seriesId = seriesItem.seriesId;
-            String imageUrl = imageUrlTextTxt.getText().toString();
-            String movieName = movieNameTextTxt.getText().toString();
-            String description = descriptionTextTxt.getText().toString();
+            String imageUrl = binding.imageUrlTextTxt.getText().toString();
+            String movieName = binding.movieNameTextTxt.getText().toString();
+            String description = binding.descriptionTextTxt.getText().toString();
             updateMovie(movie.id, movieId, seriesId, imageUrl, movieName, description);
             return true;
         } else {
@@ -67,10 +67,11 @@ public class EditMovieActivity extends BaseAddEditMovieActivity {
     }
 
     protected void showData() {
-        movieIdTextTxt.setText(movie.movieId);
-        movieNameTextTxt.setText(movie.name);
-        imageUrlTextTxt.setText(movie.imageUrl);
-        descriptionTextTxt.setText(movie.description);
+        binding.setMovie(movie);
+//        binding.movieIdTextTxt.setText(movie.movieId);
+//        binding.movieNameTextTxt.setText(movie.name);
+//        binding.imageUrlTextTxt.setText(movie.imageUrl);
+//        binding.descriptionTextTxt.setText(movie.description);
         for (int i = 0; i< customSeriesItemsAdapter.getCount(); i++) {
             SeriesItem seriesItem = customSeriesItemsAdapter.getItem(i);
             if (movie.id.equals(seriesItem.id)) {

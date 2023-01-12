@@ -11,11 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.crud.R;
+import com.example.crud.databinding.SeriesDropDownBinding;
 import com.example.crud.series.SeriesItem;
 
 import java.util.List;
 
 public class CustomSeriesItemsAdapter extends ArrayAdapter<SeriesItem> {
+
+    protected SeriesDropDownBinding binding;
 
     public CustomSeriesItemsAdapter(@NonNull Context context, int resource, @NonNull List<SeriesItem> objects) {
         super(context, resource, objects);

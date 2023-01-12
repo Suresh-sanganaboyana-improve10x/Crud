@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import com.example.crud.Constants;
 import com.example.crud.R;
 import com.example.crud.base.BaseActivity;
+import com.example.crud.databinding.ActivityMoviesBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,27 +25,26 @@ import retrofit2.Response;
 
 public class MoviesActivity extends BaseActivity {
 
+    private ActivityMoviesBinding binding;
     private ArrayList<Movie> movies = new ArrayList<>();
-    private RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movies);
+        binding = ActivityMoviesBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportActionBar().setTitle("Movies");
-        findViews();
         setupMoviesAdapter();
         setupMoviesRv();
     }
 
     private void showVisibility() {
-        progressBar.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.VISIBLE);
     }
 
     private void hideVisibility() {
-        progressBar.setVisibility(View.GONE);
+        binding.progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -91,11 +91,6 @@ public class MoviesActivity extends BaseActivity {
         });
     }
 
-    private void findViews() {
-        progressBar = findViewById(R.id.progress_bar);
-        moviesRv = findViewById(R.id.movies_rv);
-    }
-
     private void setupMoviesAdapter() {
         moviesAdapter = new MoviesAdapter();
         moviesAdapter.setData(movies);
@@ -115,8 +110,8 @@ public class MoviesActivity extends BaseActivity {
     }
 
     private void setupMoviesRv() {
-        moviesRv.setLayoutManager(new GridLayoutManager(this, 2));
-        moviesRv.setAdapter(moviesAdapter);
+        binding.moviesRv.setLayoutManager(new GridLayoutManager(this, 2));
+        binding.moviesRv.setAdapter(moviesAdapter);
     }
 
     private void deleteMovie(String id) {

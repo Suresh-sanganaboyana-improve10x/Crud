@@ -38,6 +38,7 @@ public class EditTemplateActivity extends BaseAddEditTemplateActivity {
     }
 
     private void showData() {
+        binding.setTemplate(template);
         binding.messageTxt.setText(template.messageText);
     }
 
